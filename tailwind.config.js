@@ -10,6 +10,8 @@ export default {
       'md': {'min': '886px', 'max': '4000px'}
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animated')
+  ],
 }
 

@@ -5,8 +5,10 @@ import Layout from '../layouts/Main'
 import SignIn from "../components/SignIn";
 const router = createBrowserRouter([
     {
-      path: "/",   element: <Layout/>,
+      
+      path: "/",  element: <Layout/>,
       children:[
+        {path:"/" , element:<App/>},
         {path: "/register", element:<Register/>},
         {path: "/signin", element:<SignIn/>}
       ]
