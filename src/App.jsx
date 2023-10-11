@@ -1,14 +1,19 @@
 import { Link as Anchor } from "react-router-dom"
-import Navbar from "./components/navbar"
+import HomeCarrucel from "./components/HomeCarrucel"
+import './app.css'
+
 
 function App() {
 
   return (
     <>
-    <div>
-      <Navbar/>
+    <div className="App">
+      <HomeCarrucel/>
     </div>
+
+
       <div>
+
         <Anchor to={'/register'}>Registrate</Anchor>
       </div>
 
