@@ -42,7 +42,7 @@ export default function Navbar() {
               </p >
             </Link>
 
-            <Link to="#"   >
+            <Link to="/appoiment"   >
               <p className="hover:text-violet-800 hover:border-b-2 transition duration-700  ">
                 Schedule appointment
               </p >
