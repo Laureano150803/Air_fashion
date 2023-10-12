@@ -29,12 +29,12 @@ const HomeCarrucel = () => {
         <div className='flex h-[100%] w-[100%] bg-gradient-to-br from-[rgba(15,32,227,0.5)] to-#FF5733 items-center'>
           <div className='flex flex-col h-[100%] justify-around '>
 
-            <div className="">
-              <h1 className='text-css-h1 animate-fade-right animate-infinite animate-duration-[6900ms]  text-6xl  ml-10 text-white '>{/* {imageSlide[currentState].title} */}</h1>
+            <div className="z-10 flex">
+              <h1 className='text-css-h1 bg-local animate-fade-right animate-infinite animate-duration-[6900ms] z-10 text-6xl  ml-10 text-white '>{imageSlide[currentState].title} </h1>
             </div>
            
-            <div className="w-[60%]  self-end">
-              <p className=' text-css animate-fade-up animate-infinite animate-duration-[6900ms]  text-3xl  text-gray-50'>{imageSlide[currentState].body}</p>
+            <div className="w-[60%] z-10 self-end flex">
+              <p className=' text-css animate-fade-up animate-infinite animate-duration-[6900ms] z-10 text-3xl  text-gray-50'>{imageSlide[currentState].body}</p>
             </div>
           </div>
           <div className=''>

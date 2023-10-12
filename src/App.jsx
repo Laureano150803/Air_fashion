@@ -3,6 +3,8 @@ import './app.css'
 import axios from "axios"
 import { useEffect, useState } from "react"
 import apiUrl from "../api"
+import Footer from "./components/Footer"
+
 
 function App() {
 
@@ -23,7 +25,7 @@ function App() {
     <div className="h-[30vh] border border-black w-[100%] flex">
       {services.map((service) =>(
 
-        <div key={service._id} className={`w-[10%] border border-black bg-[${service.serviceTypeId.color}]`}>
+        <div key={service._id} className={`w-[10%] border border-black bg-${service.serviceTypeId.color}`}>
 
           <p>
             {service.nombre}
@@ -34,6 +36,38 @@ function App() {
       
     </div>
 
+    <div>
+    <Footer/>
+    </div>
+    <div>
+    <Footer/>
+    </div>
+    <div>
+    <Footer/>
+    </div>
+    <div>
+    <Footer/>
+    </div>
+     <div>
+    <Footer/>
+    </div>
+     <div>
+    <Footer/>
+    </div>
+    <div>
+    <Footer/>
+    </div>
+     <div>
+    <Footer/>
+    </div>
+
+    <div>
+    <Footer/>
+    </div>
+     <div>
+    <Footer/>
+    </div>
+    
     </>
   )
 }
