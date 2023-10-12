@@ -19,7 +19,7 @@ export default function Navbar() {
       <div className="flex space-x-8 flex-wrap jus mr-20 text-lg " >
         
         <Link to = "#" className="" >
-            <p className="hover:text-violet-50 hover:animate-jump-in hover:animate-delay-300 hover:animate-once hover:border-b-2 cursor-pointer transition duration-700 "  >
+            <p className="hover:text-violet-50  hover:border-b-2 cursor-pointer transition duration-700 "  >
               Home 
             </p >
         </Link>
