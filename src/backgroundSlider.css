@@ -6,3 +6,9 @@
 .text-css-h1{
 font-family: 'Young Serif', serif;
 }
+
+.navbar.fixed{
+    background-color: aliceblue;
+    transition: 3s ease-in-out;
+    
+}
