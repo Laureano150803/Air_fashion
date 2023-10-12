@@ -30,7 +30,7 @@ const HomeCarrucel = () => {
           <div className='flex flex-col h-[100%] justify-around '>
 
             <div className="">
-              <h1 className='text-css-h1 animate-fade-right animate-infinite animate-duration-[6900ms]  text-6xl  ml-10 text-white '>{imageSlide[currentState].title}</h1>
+              <h1 className='text-css-h1 animate-fade-right animate-infinite animate-duration-[6900ms]  text-6xl  ml-10 text-white '>{/* {imageSlide[currentState].title} */}</h1>
             </div>
            
             <div className="w-[60%]  self-end">

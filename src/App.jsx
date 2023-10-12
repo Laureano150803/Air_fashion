@@ -11,12 +11,6 @@ function App() {
       <HomeCarrucel/>
     </div>
 
-
-      <div>
-
-        <Anchor to={'/register'}>Registrate</Anchor>
-      </div>
-
     </>
   )
 }
