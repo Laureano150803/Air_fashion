@@ -1,17 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import logo from '../assets/images/logo.png'
 import facebook from '../assets/images/facebook.png'
 import insta from '../assets/images/instagram.png'
-import { useSelector, useDispatch } from 'react-redux'
-import all_services from '../store/actions/allServices'
-const { service_all } = all_services
 export default function Footer() {
-    const services_all = [...useSelector(store => store.service_all.services)]
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(service_all())
-    }, [])
-    console.log(typeof (services_all))
     return (
         <>
             <div className='bg-[#0f172a] min-h-[10rem] text-white font-bold font-mono flex justify-evenly items-center flex-wrap'>
@@ -28,14 +19,6 @@ export default function Footer() {
                     </div>
 
                 </div>
-                {services_all.map((service) => (
-                    <div key={service._id}>
-                        <p>{service.titulo}</p>
-                        <p>{service.nombre}</p>
-                        <p>{service.descripcion}</p>
-                        <p>{service.precio}</p>
-                    </div>
-                ))}
             </div>
         </>
 

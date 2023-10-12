@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react'
 import axios from 'axios'
 import apiUrl from '../../api'
 import { gapi } from 'gapi-script'
-import Swal from 'sweetalert2'
+import showSwalAlert from '../showAlert'
 import {GoogleLogin} from 'react-google-login'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
@@ -21,25 +21,8 @@ export default function SignIn() {
 
     gapi.load("client:auth2", start)
   }, [])
-  //funcion para manejar la alerta
-  const showSwalAlert = (icon, title) => {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'center',
-      showConfirmButton: false,
-      timer: 4000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer);
-        toast.addEventListener('mouseleave', Swal.resumeTimer);
-      }
-    });
-    Toast.fire({
-      icon: icon,
-      title: title,
-      confirmButtonText: 'Ok!'
-    });
-  };
+
+  
   const onSuccess = (response) => {
     // console.log(response)
     const {email,googleId } = response.profileObj;
