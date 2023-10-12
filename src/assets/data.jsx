@@ -1,7 +1,7 @@
 const imageSlide =[
     {
         url:"src/assets/images/banner.jpg",
-        title:'high-end hair salon in Cartagena',
+        title:'High-End Hair salon in Cartagena',
         body: 'At Air Fashion, we are proud to use the most exclusive products and the most advanced techniques to enhance your natural beauty. Each client is treated with personalized attention, from a detailed consultation to the impeccable execution of cutting-edge cuts, styling, coloring and treatments.'
     },
     {
