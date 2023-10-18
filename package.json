@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
+    "dayjs": "^1.11.10",
     "gapi": "^0.0.3",
     "gapi-script": "^1.2.0",
     "react": "^18.2.0",
