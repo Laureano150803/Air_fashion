@@ -6,7 +6,7 @@ import axios from "axios";
 import apiUrl from '../../api.js';
 import { useNavigate } from "react-router-dom";
 import showSwalAlert from "../showAlert";
-import NavbarMobile from './NavbarMobile';
+
 import '../backgroundSlider.css';
 
 export default function Navbar() {
@@ -34,7 +34,7 @@ export default function Navbar() {
   const [fix, setFix] = useState(false)
 
   function setFixed() {
-    if (window.scrollY >= 392) {
+    if (window.scrollY >= 50) {
       setFix(true)
     } else {
       setFix(false)
