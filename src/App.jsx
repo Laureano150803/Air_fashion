@@ -3,8 +3,9 @@ import './app.css'
 import axios from "axios"
 import { useEffect, useState } from "react"
 import apiUrl from "../api"
+import LittleOfUs from "./components/LittleOfUs"
 import Footer from "./components/Footer"
-
+import ImageGallery from "./components/ImageGallery"
 
 function App() {
 
@@ -22,6 +23,12 @@ function App() {
     <div className="App">
       <HomeCarrucel/>
     </div>
+    <div>
+      <LittleOfUs/>
+    </div>
+    {/* <div>
+      <ImageGallery/>
+    </div> */}
     <div className="h-[30vh] border border-black w-[100%] flex">
       {services.map((service) =>(
 
@@ -36,37 +43,6 @@ function App() {
       
     </div>
 
-    <div>
-    <Footer/>
-    </div>
-    <div>
-    <Footer/>
-    </div>
-    <div>
-    <Footer/>
-    </div>
-    <div>
-    <Footer/>
-    </div>
-     <div>
-    <Footer/>
-    </div>
-     <div>
-    <Footer/>
-    </div>
-    <div>
-    <Footer/>
-    </div>
-     <div>
-    <Footer/>
-    </div>
-
-    <div>
-    <Footer/>
-    </div>
-     <div>
-    <Footer/>
-    </div>
     
     </>
   )

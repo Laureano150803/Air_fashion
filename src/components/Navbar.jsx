@@ -34,7 +34,7 @@ export default function Navbar() {
   const [fix, setFix] = useState(false)
 
   function setFixed() {
-    if (window.scrollY >= 392) {
+    if (window.scrollY >= 50) {
       setFix(true)
     } else {
       setFix(false)
