@@ -31,7 +31,7 @@ const CardService3D = () => {
     {typeService.map(service => (
       
 
-      <Link to={'/register'} key={service._id}   className='w-[25%]'>
+      <Link to={`/detail/${service._id}`} key={service._id}   className='w-[20%]'>
 
         <Tilt
           options={defaultOptions}
