@@ -1,10 +1,12 @@
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 import { useRef, useEffect } from "react"
 import apiUrl from "../../api"
 import { gapi } from "gapi-script"
 import showSwalAlert from "../showAlert"
 import { GoogleLogin } from 'react-google-login'
 import { Link } from "react-router-dom"
+import ClientsForm from '../components/ClientsForm'
 export default function Register() {
   let email = useRef()
   let password = useRef()
@@ -37,6 +39,7 @@ export default function Register() {
   const onFailure = () => {
     console.log("something went wrong");
   }
+  const navegate = useNavigate()
   async function handleform(e) {
     e.preventDefault()
     const data = {
@@ -44,7 +47,10 @@ export default function Register() {
       password: password.current.value
     }
     await axios.post(apiUrl + 'users/signup', data)
-    .then(res => showSwalAlert('success', 'Sign Up Successfully!'))
+    .then(res =>{
+      showSwalAlert('success','Sign Up Successfully!') 
+      navegate('/signin')
+    })
     .catch(err => showSwalAlert('error', err.response.data.Response))
   }
   return (
@@ -67,7 +73,7 @@ export default function Register() {
           <input ref={password} className="border border-slate-300 rounded-sm w-[20rem] h-10 outline-none" type="password" placeholder="Password" required />
           <div className=" text-center mt-2">
             <p>Already a member?<Link to={'/signin'} className="font-bold hover:border-b-2 border-black  ">Log In</Link></p>
-            <input type="submit" className="bg-gray-800 cursor-pointer text-gray-50 font-bold mt-4 py-2 px-20 rounded-sm transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300" value="Sign Up" />
+            <input  type="submit" className="bg-gray-800 cursor-pointer text-gray-50 font-bold mt-4 py-2 px-20 rounded-sm transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300" value="Sign Up" />
           </div>
         </form>
       </div>

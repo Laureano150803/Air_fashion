@@ -6,7 +6,7 @@ import axios from "axios";
 import apiUrl from '../../api.js';
 import { useNavigate } from "react-router-dom";
 import showSwalAlert from "../showAlert";
-
+import NavbarMobile from './NavbarMobile';
 import '../backgroundSlider.css';
 
 export default function Navbar() {
@@ -74,10 +74,10 @@ export default function Navbar() {
               <Link to="#" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Services
               </Link>
-              <Link to="#" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
+              <Link to="/AboutUs" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 About us
               </Link>
-              <Link to="#" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
+              <Link to="/Contact" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Contact
               </Link>
               {!role ? (

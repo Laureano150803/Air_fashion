@@ -1,33 +1,61 @@
 import React from 'react'
-import imagen1 from '/src/assets/images/cliente2.jpg'
-import imagen2 from '/src/assets/images/barberia.jpg'
-import imagen3 from '/src/assets/images/img-2.jpg'
-import imagen4 from '/src/assets/images/pic-4.jpg'
-import imagen5 from '/src/assets/images/pic-3.jpg'
-import imagen6 from '/src/assets/images/img-1.jpg'
+import porsilas from '/src/assets/images/por_silas.jpg';
 
 
  const ImageGallery = () => {
     return (
-        <div className='p-5 grid grid-cols-6 gap-4 '>
-            <div className="">
+        <>
+        <div className=" opacity-60  bg-gradient-to-t from-[rgba(15,32,227,0.5)]">
 
-            <div className="">
-            <img src={imagen1} alt="" />
-
+        <div className="  grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className=" grid gap-4">
+            <div>
+                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt=""/>
             </div>
-            
-            <div className="col-span-">
-            <img src={imagen3} alt="" />
-
+            <div>
+                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt=""/>
             </div>
-            <img src={imagen2} alt="" />
-            <img src={imagen4} alt="" />
-            <img src={imagen5} alt="" />
-            <img src={imagen6} alt="" />
-
+            <div>
+                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt=""/>
             </div>
         </div>
+        <div className="grid gap-4">
+            <div>
+                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt=""/>
+            </div>
+            <div>
+                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt=""/>
+            </div>
+            <div>
+                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt=""/>
+            </div>
+        </div>
+        <div className="grid gap-4">
+            <div>
+                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt=""/>
+            </div>
+            <div>
+                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt=""/>
+            </div>
+            <div>
+                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt=""/>
+            </div>
+        </div>
+        <div className="grid gap-4">
+            <div>
+                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt=""/>
+            </div>
+            <div>
+                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt=""/>
+            </div>
+            <div>
+                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt=""/>
+            </div>
+        </div>
+    </div>
+        </div>
+        
+        </>
     )
 }
 
