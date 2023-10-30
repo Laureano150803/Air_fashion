@@ -36,7 +36,7 @@ function App() {
         <div className="mb-14">
           <CardsHairdresser />
         </div>
-        <div  >
+        <div >
           <CardService3D />
         </div>
 
