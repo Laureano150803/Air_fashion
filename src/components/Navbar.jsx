@@ -6,7 +6,7 @@ import axios from "axios";
 import apiUrl from '../../api.js';
 import { useNavigate } from "react-router-dom";
 import showSwalAlert from "../showAlert";
-
+import NavbarMobile from './NavbarMobile';
 import '../backgroundSlider.css';
 
 export default function Navbar() {
@@ -19,7 +19,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const role = localStorage.getItem("role");
   const token = localStorage.getItem("token");
-  const headers = { headers: { 'authorization': `Bearer ${token}` } };
+  const headers = {headers: { 'authorization': `Bearer ${token}` }};
 
   function backHome() {
     axios.post(apiUrl + 'users/signout', null, headers)
