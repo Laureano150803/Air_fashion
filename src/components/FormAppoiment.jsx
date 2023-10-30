@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import apiUrl from '../../api';
 import dayjs from 'dayjs';
-
-export default function FormAppointment({ state }) {
-  const token = localStorage.getItem('token');
-  const headers = { headers: { 'authorization': `Bearer ${token}` } };
-
+import {headers} from '../headers';
+export default function FormAppointment() {
   const [idPeluquero, setIdPeluquero] = useState('');
   const [selectedHour, setSelectedHour] = useState('');
   const [peluquerosDisponibles, setPeluquerosDisponibles] = useState([]);
-  const [hasSelectedHour, setHasSelectedHour] = useState(false); // Nuevo estado
+  const [hasSelectedHour, setHasSelectedHour] = useState(false);
+  const [services, setServices]=useState([])
+  const [idService, setIdService]=useState('')
+  const [nameService, setNameService]=useState('')
 
   const currentHour = dayjs().hour();
   const currentMinute = dayjs().minute();
   const currentTime = `${currentHour.toString().padStart(2, '0')}:${currentMinute.toString().padStart(2, '0')}`;
-  
+
   const hoursArray = [
     '08:00',
     '09:00',
@@ -46,7 +46,9 @@ export default function FormAppointment({ state }) {
 
     const data = {
       inicio: dayjs(`${currentYear}-${currentMonth}-${currentDay}T${selectedHour}:00`).format('YYYY-MM-DDTHH:mm:ss').toString(),
-      peluquero_id: idPeluquero
+      peluquero_id: idPeluquero,
+      servicio_id: idService,
+      description:nameService
     };
 
     axios.post(apiUrl + 'google/new/appointment', data, headers)
@@ -71,18 +73,31 @@ export default function FormAppointment({ state }) {
       console.error('Error al obtener peluqueros disponibles', error);
     }
   }
+  useEffect(()=>{
+    axios.get(apiUrl + 'services').then(res=>setServices(res.data.Response)).catch(res=>res)
+  },[])
 
   useEffect(() => {
     getPeluquerosDisponibles();
   }, [selectedHour, hasSelectedHour]); // Actualiza el efecto para observar 'hasSelectedHour' y 'selectedHour'
 
   return (
-    <div className='animate-fade-left animate-once fixed top-0 right-0 w-[20%]  h-full bg-teal-400  z-50 rounded-l-xl overflow-y-auto'>
-      <div onClick={state} className='text-end cursor-pointer'>
-        X
-      </div>
+    <div className=' bg-teal-400  z-50 rounded-l-xl overflow-y-auto'>
       <div className='flex justify-center'>
         <form onSubmit={handleAppointment} className='flex flex-col'>
+
+          <select onChange={(e)=>{
+            const selectedOption = e.target.options[e.target.selectedIndex]
+            setIdService(selectedOption.value)
+            setNameService(selectedOption.text)
+            }}>
+            <option value="">Seleccione el servicio</option>
+            {services.map(service=>(
+              <option key={service._id} value={service._id}>{service.nombre}</option>
+            ))}
+          </select>
+
+
           <select value={selectedHour} onChange={(e) => {
             setSelectedHour(e.target.value);
             setHasSelectedHour(e.target.value !== ''); // Actualiza hasSelectedHour

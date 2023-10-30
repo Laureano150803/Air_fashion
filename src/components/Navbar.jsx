@@ -7,6 +7,7 @@ import apiUrl from '../../api.js';
 import { useNavigate } from "react-router-dom";
 import showSwalAlert from "../showAlert";
 import NavbarMobile from './NavbarMobile';
+import { headers } from "../headers";
 import '../backgroundSlider.css';
 
 export default function Navbar() {
@@ -18,9 +19,6 @@ export default function Navbar() {
 
   const navigate = useNavigate();
   const role = localStorage.getItem("role");
-  const token = localStorage.getItem("token");
-  const headers = {headers: { 'authorization': `Bearer ${token}` }};
-
   function backHome() {
     axios.post(apiUrl + 'users/signout', null, headers)
       .then(res => {
@@ -68,9 +66,9 @@ export default function Navbar() {
               <Link to="/" className="hover:text-violet-800 hover:border-b-2 cursor-pointer transition duration-700">
                 Home
               </Link>
-              <Link to="/appointment" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
+              {role === '1'? ( <Link to="/appointment" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Schedule appointment
-              </Link>
+              </Link>):('')}
               <Link to="#" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Services
               </Link>

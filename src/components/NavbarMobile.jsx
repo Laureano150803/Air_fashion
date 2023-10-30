@@ -15,9 +15,10 @@ export default function NavbarMobile({ estado, backHome }) {
         <Link to="/" className="hover:text-violet-800 border-b-2 cursor-pointer transition duration-700 text-lg ">
           Home
         </Link>
-        <Link to="/appointment" className="hover:text-violet-800 border-b-2 transition duration-700">
+        {role==='1' ? (<Link to="/appointment" className="hover:text-violet-800 border-b-2 transition duration-700">
           Schedule Appointment
-        </Link>
+        </Link>):('')}
+        
         <Link to="#" className="hover:text-violet-800 border-b-2 transition duration-700">
           Services
         </Link>
