@@ -35,7 +35,8 @@ function App() {
         <div className="mb-14">
           <CardsHairdresser />
         </div>
-        <div >
+
+        <div  className="flex justify-around bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-60% bg-purple-500 to-90%">
           <CardService3D />
         </div>
 
