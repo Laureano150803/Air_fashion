@@ -6,7 +6,7 @@ import axios from "axios";
 import apiUrl from '../../api.js';
 import { useNavigate } from "react-router-dom";
 import showSwalAlert from "../showAlert";
-import NavbarMobile from './NavbarMobile';
+
 import '../backgroundSlider.css';
 
 export default function Navbar() {
