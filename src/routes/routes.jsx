@@ -21,6 +21,7 @@ const router = createBrowserRouter([
         {path:"/appointment", element:<AppiomentClient/>},
         {path:"/appointment/new", element:<FormAppointment/>},
         {path:"/detail/:id", element:<DetailTypeService/>}
+
       ]
     },
   ])
