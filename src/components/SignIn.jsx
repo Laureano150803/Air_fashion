@@ -12,6 +12,7 @@ export default function SignIn() {
   const password = useRef()
   const clientID = import.meta.env.VITE_CLIENT_ID
   const navigate = useNavigate()
+  
   useEffect(() => {
     const start = () => {
       gapi.auth2.init({
@@ -24,7 +25,7 @@ export default function SignIn() {
 
   
   const onSuccess = (response) => {
-    // console.log(response)
+
     const {email,googleId } = response.profileObj;
     let data = {
       email: email,
@@ -45,6 +46,7 @@ export default function SignIn() {
       .catch(err => showSwalAlert('error', err.response.data.Response))
 
   }
+
   const onFailure = () => {
     console.log("something went wrong");
   }
@@ -72,6 +74,7 @@ export default function SignIn() {
   return (
     <>
      <div className="w-full min-h-[90vh] flex justify-center items-center bg-slate-100">
+
         <form className="flex flex-col" onSubmit={handleform}>
           <GoogleLogin
             className="flex space-x-2 justify-center items-end hover:scale-105 border border-gray-300 text-gray-600 py-2 transition duration-100 w-[20rem]"
@@ -88,7 +91,7 @@ export default function SignIn() {
           <input ref={email} className="border border-slate-300 rounded-sm w-[20rem]  h-10 mb-4 outline-none" type="text" placeholder="E-mail" autoComplete="none" required/>
           <input ref={password} className="border border-slate-300 rounded-sm w-[20rem] h-10 outline-none" type="password" placeholder="Password" required />
           <div className=" text-center mt-2">
-            <p>Create account <Link to={'/register'} className="font-bold hover:border-b-2 border-black  ">Here</Link></p>
+            <p>Create account <Link to={'/ClientsForm'} className="font-bold hover:border-b-2 border-black  ">Here</Link></p>
             <input type="submit" className="bg-gray-800 cursor-pointer text-gray-50 font-bold mt-4 py-2 px-20 rounded-sm transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300" value="Log In" />
           </div>
         </form>
