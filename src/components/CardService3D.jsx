@@ -1,45 +1,55 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+
 import { Tilt } from 'react-tilt';
 import { Link } from 'react-router-dom';
 import '../TiltComponent.css';
+import axios from 'axios';
+import apiUrl from '../../api';
+import { useEffect, useState } from 'react';
 
 const CardService3D = () => {
+  const [typeService, settypeService] = useState([])
+  
+  useEffect(() => {
+    axios.get( apiUrl + 'types').then(res => settypeService(res.data.Response)).catch(res=>console.log(res))
+  }, [])
+  
+ 
   const defaultOptions = {
     reverse: false,
-    max: 30,
+    max: 35,
     perspective: 1000,
-    scale: 1, // Mantén la escala en el eje X igual a 1
-    scaleY: 1.2, // Aplica escala en el eje Y para el efecto 3D
+    scale: 1.1,
     speed: 1000,
     transition: true,
     axis: null,
     reset: true,
-    easing: 'cubic-bezier(.03,.98,.52,.99)',
+    easing: "cubic-bezier(.03,.98,.52,.99)",
   };
 
   return (
     <>
-      <Link to={'/register'} className='w-[25%] overflow-x-hidden'>
+    {typeService.map(service => (
+      
+
+      <Link to={'/register'} key={service._id}   className='w-[25%]'>
+
         <Tilt
           options={defaultOptions}
           style={{
             height: 620,
-            backgroundImage: 'url("https://i.pinimg.com/280x280_RS/ab/13/c9/ab13c9de74f1839af0d8464e0d91450b.jpg")',
+            backgroundImage: `url("${service.foto}")`,
             transformStyle: 'preserve-3d',
+            backgroundSize: 'cover '
+            
           }}
-          className='flex justify-center items-center bg-transparent'
+          className='flex justify-center items-center bg-transparent snap-none '
         >
-          <p
-            style={{ transform: 'translateZ(40px)' }}
-            to={'/register'}
-            className='flex justify-center items-center text-white text-4xl'
-            data-tilt
-          >
-            hola mundo
+          <p style={{transform: 'translateZ(40px)'}} to={'/register'} className='flex justify-center items-center  text-white text-4xl' data-tilt>
+            {service.name }
           </p>
         </Tilt>
       </Link>
+    ))}
     </>
   );
 };

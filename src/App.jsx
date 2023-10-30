@@ -9,7 +9,6 @@ import CardsHairdresser from "./components/CardsHairdresser"
 import CardService3D from "./components/CardService3D"
 
 
-
 function App() {
 
   const [services, setServices] = useState([])

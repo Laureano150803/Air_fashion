@@ -22,7 +22,6 @@ const LittleOfUs = () => {
             <div className='  flex flex-col justify-center items-center '>
                 <h2 className='text-css-h1'>Professional Team </h2>
                <br />
-
                 <p className='aboutUs text-center'>Our 'Professional Team' is made up of a highly qualified group of experts in their respective fields, dedicated to providing exceptional service</p>
             </div>
         </div>
@@ -36,7 +35,6 @@ const LittleOfUs = () => {
                 <h2 className='text-css-h1'>Premium Products</h2>
               <br />
                 <p className='aboutUs text-center'>At Hair Fashion, we use only the best products for your hair so that it remains shiny and strong. </p>
-
             </div>
         </div>
 
