@@ -14,6 +14,7 @@ const HomeCarrucel = () => {
     }, 7000);
     return () => clearTimeout(timer)
   }, [currentState])
+  
   const bgImageStyle = {
     backgroundImage: `url(${imageSlide[currentState].url})`,
     backgroundPosition: 'center',
