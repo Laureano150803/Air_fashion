@@ -54,8 +54,8 @@ import porsilas from '/src/assets/images/por_silas.jpg';
         </div>
     </div>
         </div>
-        
         </>
+
     )
 }
 

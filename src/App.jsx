@@ -37,8 +37,8 @@ function App() {
     <div  >
       <CardService3D/>
     </div>
-   
     <div className="h-auto  border border-black w-[100%] flex flex-wrap">
+
       {services.map((service) =>(
 
         <div key={service._id} className={`w-[10%] border border-black bg-${service.serviceTypeId.color}`}>
@@ -51,9 +51,6 @@ function App() {
       ))}
       
     </div>
-
-      
-
     
     </>
   )

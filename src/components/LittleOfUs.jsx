@@ -46,7 +46,9 @@ const LittleOfUs = () => {
             <div className='  flex flex-col justify-center items-center '>
                 <h2 className='text-css-h1'>The best equipment for your hair </h2>
                <br />
+
                 <p className='aboutUs text-center'>Our salon uses top-notch equipment for all the services we provide.</p>
+
             </div>
         </div>
 
@@ -58,10 +60,10 @@ const LittleOfUs = () => {
             <div className='  flex flex-col justify-center items-center '>
                 <h2 className='text-css-h1'>We have the best customer service </h2>
                <br />
+
                 <p className='aboutUs text-center'>Exceptional service experience and satisfaction guaranteed</p>
             </div>
         </div>
-        
     </div>
   )
 }
