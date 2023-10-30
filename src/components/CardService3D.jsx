@@ -1,11 +1,19 @@
-import React from 'react';
-import imgDamas from '/src/assets/images/por_silas.jpg';
-import ReactDOM from 'react-dom';
+
 import { Tilt } from 'react-tilt';
 import { Link } from 'react-router-dom';
 import '../TiltComponent.css';
+import axios from 'axios';
+import apiUrl from '../../api';
+import { useEffect, useState } from 'react';
 
 const CardService3D = () => {
+  const [typeService, settypeService] = useState([])
+  
+  useEffect(() => {
+    axios.get( apiUrl + 'types').then(res => settypeService(res.data.Response)).catch(res=>console.log(res))
+  }, [])
+  
+ 
   const defaultOptions = {
     reverse: false,
     max: 35,
@@ -20,22 +28,28 @@ const CardService3D = () => {
 
   return (
     <>
-      <Link to={'/register'}>
+    {typeService.map(service => (
+      
+
+      <Link to={'/register'} key={service._id}   className='w-[25%]'>
+
         <Tilt
           options={defaultOptions}
           style={{
             height: 620,
-            width: 410,
-            backgroundImage: 'url("https://i.pinimg.com/280x280_RS/ab/13/c9/ab13c9de74f1839af0d8464e0d91450b.jpg")',
+            backgroundImage: `url("${service.foto}")`,
             transformStyle: 'preserve-3d',
+            backgroundSize: 'cover '
+            
           }}
-          className='flex justify-center items-center bg-transparent'
+          className='flex justify-center items-center bg-transparent snap-none '
         >
           <p style={{transform: 'translateZ(40px)'}} to={'/register'} className='flex justify-center items-center  text-white text-4xl' data-tilt>
-            hola mundo
+            {service.name }
           </p>
         </Tilt>
       </Link>
+    ))}
     </>
   );
 };
