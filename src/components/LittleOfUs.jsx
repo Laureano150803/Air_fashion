@@ -12,7 +12,7 @@ import '../backgroundSlider.css'
 
 const LittleOfUs = () => {
   return (
-    <div className='w-[100%] bg-slate-50 flex justify-evenly items-center flex-wrap h-[48vh] gap-7 md:h-[] '>
+    <div className=' bg-slate-50 flex justify-evenly items-center flex-wrap h-[48vh] gap-7 md:h-[] '>
        
         <div className=" w-[20rem]  flex flex-col rounded-xl justify-center bg-white  shadow-lg shadow-blue-500/60 h-[80%] ">
             <div className='flex justify-center items-center' >
@@ -22,7 +22,8 @@ const LittleOfUs = () => {
             <div className='  flex flex-col justify-center items-center '>
                 <h2 className='text-css-h1'>Professional Team </h2>
                <br />
-                <p className='text-center'>Our 'Professional Team' is made up of a highly qualified group of experts in their respective fields, dedicated to providing exceptional service</p>
+
+                <p className='aboutUs text-center'>Our 'Professional Team' is made up of a highly qualified group of experts in their respective fields, dedicated to providing exceptional service</p>
             </div>
         </div>
 
@@ -34,7 +35,8 @@ const LittleOfUs = () => {
             <div className='  flex flex-col justify-center items-center  '>
                 <h2 className='text-css-h1'>Premium Products</h2>
               <br />
-                <p className='text-center'>At Hair Fashion, we use only the best products for your hair so that it remains shiny and strong. </p>
+                <p className='aboutUs text-center'>At Hair Fashion, we use only the best products for your hair so that it remains shiny and strong. </p>
+
             </div>
         </div>
 
@@ -46,7 +48,9 @@ const LittleOfUs = () => {
             <div className='  flex flex-col justify-center items-center '>
                 <h2 className='text-css-h1'>The best equipment for your hair </h2>
                <br />
-                <p className='text-center'>Our salon uses top-notch equipment for all the services we provide.</p>
+
+                <p className='aboutUs text-center'>Our salon uses top-notch equipment for all the services we provide.</p>
+
             </div>
         </div>
 
@@ -58,7 +62,8 @@ const LittleOfUs = () => {
             <div className='  flex flex-col justify-center items-center '>
                 <h2 className='text-css-h1'>We have the best customer service </h2>
                <br />
-                <p className='text-center'>Exceptional service experience and satisfaction guaranteed</p>
+
+                <p className='aboutUs text-center'>Exceptional service experience and satisfaction guaranteed</p>
             </div>
         </div>
     </div>

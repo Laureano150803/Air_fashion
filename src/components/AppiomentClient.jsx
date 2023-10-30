@@ -5,6 +5,7 @@ import apiUrl from '../../api.js'
 
 
 export default function AppiomentClient() {
+  
   let token = localStorage.getItem('token')
   let headers = { headers: { 'authorization': `Bearer ${token}` } }
   function confirmAccount() {

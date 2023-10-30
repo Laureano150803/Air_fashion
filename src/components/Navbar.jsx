@@ -74,10 +74,10 @@ export default function Navbar() {
               <Link to="#" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Services
               </Link>
-              <Link to="#" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
+              <Link to="/AboutUs" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 About us
               </Link>
-              <Link to="#" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
+              <Link to="/Contact" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Contact
               </Link>
               {!role ? (
