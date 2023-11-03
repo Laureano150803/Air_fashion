@@ -12,6 +12,14 @@ import CardService3D from "./components/CardService3D"
 
 function App() {
 
+  const [services, setServices] = useState([])
+
+  useEffect(() => {
+    axios.get(apiUrl + 'services').then(res => setServices(res.data.Response)).catch(res => console.log(res))
+  }, [])
+
+  console.log(services)
+
 
   return (
     <>

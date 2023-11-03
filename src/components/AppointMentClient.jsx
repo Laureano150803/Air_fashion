@@ -3,11 +3,13 @@ import apiUrl from '../../api.js';
 import showSwalAlert from '../showAlert.js';
 import { useNavigate } from 'react-router-dom';
 import { headers } from '../headers.js';
+import { Link } from 'react-router-dom';
 export default function AppiomentClient() {
   const navigate = useNavigate()
-
+  const role = localStorage.getItem('role')
 
   function confirmAccount() {
+    
     axios.get(apiUrl + 'google', headers)
       .then((res) => {
         showSwalAlert('success', 'Choose your appointment!');
@@ -21,11 +23,19 @@ export default function AppiomentClient() {
   }
 
   return (
-    <div>
+    <>
+    {role ==='1'?(<div>
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={confirmAccount}>
         make an appointment
       </button>
-    </div>
+    </div>):(<Link to={'/ClientsForm'}>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        make an appointment
+      </button>
+    </Link>)}
+     
+    </>
+   
 
 
   );
