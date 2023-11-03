@@ -9,6 +9,7 @@ import CardsHairdresser from "./components/CardsHairdresser"
 import CardService3D from "./components/CardService3D"
 
 
+
 function App() {
 
 
@@ -27,11 +28,13 @@ function App() {
         <div className="mb-14 ">
           <CardsHairdresser />
         </div>
-        <div  className="flex justify-center">
+
+        <div>
           <CardService3D />
         </div>
 
       </div>
+
 
 
       

@@ -8,12 +8,12 @@ import { useEffect, useState } from 'react';
 
 const CardService3D = () => {
   const [typeService, settypeService] = useState([])
-  
+
   useEffect(() => {
-    axios.get( apiUrl + 'types').then(res => settypeService(res.data.Response)).catch(res=>console.log(res))
+    axios.get(apiUrl + 'types').then(res => settypeService(res.data.Response)).catch(res => console.log(res))
   }, [])
-  
- 
+
+
   const defaultOptions = {
     reverse: false,
     max: 35,
@@ -28,28 +28,45 @@ const CardService3D = () => {
 
   return (
     <>
-    {typeService.map(service => (
-      
+      <div className=" flex " >
 
-      <Link to={'/register'} key={service._id}   className='w-[25%]'>
+        <div className=" w-[100vw]">
 
-        <Tilt
-          options={defaultOptions}
-          style={{
-            height: 620,
-            backgroundImage: `url("${service.foto}")`,
-            transformStyle: 'preserve-3d',
-            backgroundSize: 'cover '
-            
-          }}
-          className='flex justify-center items-center bg-transparent snap-none '
-        >
-          <p style={{transform: 'translateZ(40px)'}} to={'/register'} className='flex justify-center items-center  text-white text-4xl' data-tilt>
-            {service.name }
-          </p>
-        </Tilt>
-      </Link>
-    ))}
+          <div className=' flex justify-between  w-[100%]   '>
+
+            {typeService.map(service => (
+              <div className="container1 w-[100%]  ">
+                <span className='borderLine'></span>
+                <Link to={`/detail/${service._id}/${service.name}`} key={service._id} className='  z-10 w-[90%] '>
+
+                  <Tilt
+                    options={defaultOptions}
+                    style={{
+                      height: 620,
+                      backgroundImage: `url("${service.foto}")`,
+                      transformStyle: 'preserve-3d',
+                      backgroundSize: 'cover '
+
+                    }}
+                    className='flex justify-center items-center bg-transparent snap-none rounded-lg '>
+                    <p style={{ transform: 'translateZ(40px)' }} to={'/register'} className='flex justify-center items-center  text-white text-4xl' data-tilt>
+                      {service.name}
+                    </p>
+                  </Tilt>
+                </Link>
+
+
+              </div>))
+
+            }
+          </div>
+        </div>
+
+
+      </div>
+
+
+
     </>
   );
 };

@@ -5,8 +5,11 @@ import Layout from '../layouts/Main'
 import SignIn from "../components/SignIn";
 import AppiomentClient from "../components/AppointMentClient";
 import ClientsForm from "../components/ClientsForm";
-
+import FormAppointment from "../components/FormAppoiment";
 import AboutUs from "../components/AboutUs";
+import DetailTypeService from "../components/DetailTypeService";
+import Contact from "../components/Contact";
+
 const router = createBrowserRouter([
     {
       
@@ -16,8 +19,12 @@ const router = createBrowserRouter([
         {path: "/register", element:<Register/>},
         {path: "/signin", element:<SignIn/>},
         {path: "/ClientsForm", element:<ClientsForm/>},
-        { path: "/AboutUs" , element:<AboutUs/>},
+        {path: "/AboutUs" , element:<AboutUs/>},
+        {path: "/Contact" , element:<Contact/>},
         {path:"/appointment", element:<AppiomentClient/>},
+        {path:"/appointment/new", element:<FormAppointment/>},
+        {path:"/detail/:id/:genero", element:<DetailTypeService/>}
+
       ]
     },
   ])

@@ -12,7 +12,7 @@ import '../backgroundSlider.css'
 
 const LittleOfUs = () => {
   return (
-    <div className=' bg-slate-50 flex justify-evenly items-center flex-wrap h-[48vh] gap-7 md:h-[] '>
+    <div className=' overflow-hidden bg-slate-50 flex justify-evenly items-center flex-wrap h-[48vh] gap-7 md:h-[] '>
        
         <div className=" w-[20rem]  flex flex-col rounded-xl justify-center bg-white  shadow-lg shadow-blue-500/60 h-[80%] ">
             <div className='flex justify-center items-center' >
