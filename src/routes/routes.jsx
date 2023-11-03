@@ -8,6 +8,8 @@ import ClientsForm from "../components/ClientsForm";
 import FormAppointment from "../components/FormAppoiment";
 import AboutUs from "../components/AboutUs";
 import DetailTypeService from "../components/DetailTypeService";
+import Contact from "../components/Contact";
+
 const router = createBrowserRouter([
     {
       
@@ -18,9 +20,10 @@ const router = createBrowserRouter([
         {path: "/signin", element:<SignIn/>},
         {path: "/ClientsForm", element:<ClientsForm/>},
         {path: "/AboutUs" , element:<AboutUs/>},
+        {path: "/Contact" , element:<Contact/>},
         {path:"/appointment", element:<AppiomentClient/>},
         {path:"/appointment/new", element:<FormAppointment/>},
-        {path:"/detail/:id", element:<DetailTypeService/>}
+        {path:"/detail/:id/:genero", element:<DetailTypeService/>}
 
       ]
     },

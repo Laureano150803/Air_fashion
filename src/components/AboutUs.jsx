@@ -61,14 +61,14 @@ const AboutUs = () => {
             <div>
                 <LittleOfUs />
             </div>
-            <div className='flex flex-col justify-center  h-96 bg-fixed bg-parallax2 bg-cover'>
+            <div className='flex  justify-center  h-96 bg-fixed bg-parallax2 bg-cover'>
                <div className="flex flex-col justify-center ">
 
                 <h1 className=' text-2xl text-white aboutUs' >
                     Customer service is a priority at our high-end salon
                 </h1>
-                <br />
-                <button class="bg-blue-500 w-[10%] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                <br /><br /><br /><br />
+                <button className="box bg-white  ">
                     Explore all Services
                 </button>
                </div>
