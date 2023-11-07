@@ -91,7 +91,7 @@ export default function SignIn() {
           <input ref={email} className="border border-slate-300 rounded-sm w-[20rem]  h-10 mb-4 outline-none" type="text" placeholder="E-mail" autoComplete="none" required/>
           <input ref={password} className="border border-slate-300 rounded-sm w-[20rem] h-10 outline-none" type="password" placeholder="Password" required />
           <div className=" text-center mt-2">
-            <p>Create account <Link to={'/ClientsForm'} className="font-bold hover:border-b-2 border-black  ">Here</Link></p>
+            <p>Create account <Link to={'/register'} className="font-bold hover:border-b-2 border-black  ">Here</Link></p>
             <input type="submit" className="bg-gray-800 cursor-pointer text-gray-50 font-bold mt-4 py-2 px-20 rounded-sm transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300" value="Log In" />
           </div>
         </form>
