@@ -46,7 +46,7 @@ export default function Navbar() {
 
       <div className="sticky  z-50 top-0 bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-60% bg-purple-500 to-90% text-white h-[4rem]">
 
-        <div className={fix ? 'text-black bg-white text-violet-500 flex w-[100%] h-[100%] border-4 border-b-indigo-500 ease-in-out duration-300' : 'flex w-[100%] h-[100%]'}>
+        <div className={fix ? ' bg-white text-violet-500 flex w-[100%] h-[100%] border-4 border-b-indigo-500 ease-in-out duration-300' : 'flex w-[100%] h-[100%]'}>
 
 
 
@@ -66,7 +66,7 @@ export default function Navbar() {
               <Link to="/" className="hover:text-violet-800 hover:border-b-2 cursor-pointer transition duration-700">
                 Home
               </Link>
-              {role? ( <Link to="/appointment" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
+              {role  ? ( <Link to="/ClientsForm" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Schedule appointment
               </Link>):('')}
               <Link to="#" className="hover:text-violet-800 hover:border-b-2 transition duration-700">

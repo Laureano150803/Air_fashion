@@ -74,13 +74,14 @@ export default function FormAppointment() {
     }
   }
   useEffect(()=>{
-    axios.get(apiUrl + 'services').then(res=>setServices(res.data.Response)).catch(res=>res)
+    axios.get(apiUrl + 'services').then(res=>setServices(res.data.Response)).catch(res=>console.log(res))
   },[])
 
   useEffect(() => {
     getPeluquerosDisponibles();
   }, [selectedHour, hasSelectedHour]); // Actualiza el efecto para observar 'hasSelectedHour' y 'selectedHour'
 
+  
   return (
     <div className=' bg-teal-400  z-50 rounded-l-xl overflow-y-auto'>
       <div className='flex justify-center'>

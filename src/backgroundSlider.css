@@ -1,25 +1,25 @@
-.text-css{
-    font-family: 'Foldit', sans-serif;
-    font-family: 'Lobster', sans-serif;
+.text-css {
+  font-family: 'Foldit', sans-serif;
+  font-family: 'Lobster', sans-serif;
 
 }
-.text-css-h1{
-font-family: 'Young Serif', serif;
+
+.text-css-h1 {
+  font-family: 'Young Serif', serif;
 }
 
-.navbar.fixed{
-    background-color: aliceblue;
-    transition: 3s ease-in-out;
-    
+.navbar.fixed {
+  background-color: aliceblue;
+  transition: 3s ease-in-out;
+
 }
 
-.aboutUs{
-    font-family: 'Poltawski Nowy', serif;
+.aboutUs {
+  font-family: 'Poltawski Nowy', serif;
 }
 
 .line-loader {
-    background-image: linear-gradient(
-      to right,
+  background-image: linear-gradient(to right,
       transparent,
       #342de9,
       #fb12ff,
@@ -28,81 +28,181 @@ font-family: 'Young Serif', serif;
       transparent,
       transparent,
       transparent,
-      transparent
-    );
-    background-size: 200% 100%;
-    animation: line-loader 3s infinite linear;
-  }
-  
-  @keyframes line-loader {
-    from {
-      background-position: 100%
-    }
-    to {
-      background-position: -100%
-    }
+      transparent);
+  background-size: 200% 100%;
+  animation: line-loader 3s infinite linear;
+}
+
+@keyframes line-loader {
+  from {
+    background-position: 100%
   }
 
+  to {
+    background-position: -100%
+  }
+}
+
 .box {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-   
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
 }
 
 .box::before {
-        content: '';
-        position: absolute;
-        width: 150px;
-        height: 80%;
-        background: linear-gradient(#16aee1,#fb12ff);
-        animation: animate 4s linear infinite;
-    }
-    .box::after{
-      content: '';
-      position: absolute;
-      inset: 4px;
-      background: white;
-    }
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 80%;
+  background: linear-gradient(#16aee1, #fb12ff);
+  animation: animate 4s linear infinite;
+}
+
+.box::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  background: white;
+}
+
 @keyframes animate {
-  0%
-  {
+  0% {
     transform: rotate(0deg);
   }
-  100%
-  {
+
+  100% {
     transform: rotate(350deg);
   }
 }
-.contenedor{
+
+.contenedor {
   position: relative;
-  height: 70rem ;
+  height: 70rem;
   width: 40rem;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   border-radius: 20px;
-  
+
 
 }
-.contenedor::before{
+
+.contenedor::before {
   content: '';
   position: absolute;
   width: 50rem;
   height: 80rem;
-  background-image: conic-gradient(transparent,transparent,#00ccff);
-  animation:  animate 4s linear infinite;
+  background-image: conic-gradient(transparent, transparent, #00ccff);
+  animation: animate 4s linear infinite;
 }
-.contenedor::after{
+
+.contenedor::after {
   content: '';
   position: absolute;
   width: 50rem;
   height: 80rem;
-  background-image: conic-gradient(transparent,transparent,#d400d4);
-  animation:  animate 4s linear infinite;
+  background-image: conic-gradient(transparent, transparent, #d400d4);
+  animation: animate 4s linear infinite;
   animation-delay: -2s;
+}
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 25px 30px;
+  text-transform: uppercase;
+  color: aliceblue;
+  font-size: 1.3rem;
+  font-family: 'Poltawski Nowy', serif;
+  transition: .5s;
+  overflow: hidden;
+}
+.wrapper:hover{
+  background-color: #9900FF;
+  color: aliceblue;
+  box-shadow: 0 0 5px #9900FF,
+              0 0 25px #9900FF,
+              0 0 50px #9900FF;
+-webkit-box-reflect: below 1px linear-gradient(transparent ,#0005);
+}
+.wrapper span{
+  position: absolute;
+  display: block;
+}
+.wrapper span:nth-child(1){
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background:linear-gradient(90deg, transparent, #9900FF);
+  animation: animate1 1s  infinite;
+
+}
+@keyframes animate1{
+  0%{
+    left: -100%;
+  }
+  100%{
+    left: 100%;
+  }
+}
+.wrapper span:nth-child(2){
+  top: -100%;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background:linear-gradient(180deg, transparent, #9900FF);
+  animation: animate2 1s  infinite;
+  animation-delay: .25s;
+
+}
+@keyframes animate2{
+  0%{
+    top: -100%;
+  }
+  100%{
+    top: 100%;
+  }
+}
+.wrapper span:nth-child(3){
+   bottom: 0;
+   right: 0;
+   width: 100%;
+   height: 4px;
+   background:linear-gradient(270deg, transparent, #9900FF);
+   animation: animate3 1s  infinite;
+   animation-delay: .5s;
+
+}
+@keyframes animate3{
+  0%{
+    right: -100%;
+  }
+  100%{
+    right: 100%;
+  }
+}
+
+.wrapper span:nth-child(4){
+  bottom: -100%;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background:linear-gradient(360deg, transparent, #9900FF);
+  animation: animate4 1s  infinite;
+  animation-delay: .75s;
+
+}
+@keyframes animate4{
+  0%{
+    bottom: -100%;
+  }
+  100%{
+    bottom: 100%;
+  }
 }
