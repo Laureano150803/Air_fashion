@@ -121,6 +121,7 @@
   font-family: 'Poltawski Nowy', serif;
   transition: .5s;
   overflow: hidden;
+  
 }
 .wrapper:hover{
   background-color: #9900FF;
