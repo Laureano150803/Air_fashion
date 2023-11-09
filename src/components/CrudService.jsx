@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import apiUrl from '../../api'
+import { show_alerta } from '../functions'
+
 const CrudService = () => {
   const [services, setservices] = useState([])
   useEffect(() => {
