@@ -46,7 +46,7 @@ export default function DetailTypeService() {
             <div className="line-loader  h-1 mb-8"></div>
 
          
-          <div className="flex flex-wrap gap-12 mb-10 ">
+          <div className="flex flex-wrap gap-12 mb-10 justify-center">
 
             {servicios.map(servicio => (
 
