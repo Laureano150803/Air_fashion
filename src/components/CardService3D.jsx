@@ -35,9 +35,9 @@ const CardService3D = () => {
           <div className=' flex justify-between  w-[100%]   '>
 
             {typeService.map(service => (
-              <div className="container1 w-[100%]  ">
+              <div key={service._id} className="container1 w-[100%]  ">
                 <span className='borderLine'></span>
-                <Link to={`/detail/${service._id}/${service.name}`} key={service._id} className='  z-10 w-[90%] '>
+                <Link to={`/detail/${service._id}/${service.name}`}  className='  z-10 w-[90%] '>
 
                   <Tilt
                     options={defaultOptions}
