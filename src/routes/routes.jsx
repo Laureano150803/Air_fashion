@@ -10,7 +10,8 @@ import AboutUs from "../components/AboutUs";
 import DetailTypeService from "../components/DetailTypeService";
 import Contact from "../components/Contact";
 import AppoimennsTable from '../components/AppointmentsTable.jsx';
-
+import ListHairdresser from "../components/ListHairdresser.jsx";
+import CrudService from "../components/CrudService.jsx";
 const router = createBrowserRouter([
     {
       
@@ -22,6 +23,8 @@ const router = createBrowserRouter([
         {path: "/ClientsForm", element:<ClientsForm/>},
         {path: "/AboutUs" , element:<AboutUs/>},
         {path: "/Contact" , element:<Contact/>},
+        {path: "/CrudService" , element:<CrudService/>},
+        {path: "/ListHairdresser" , element:<ListHairdresser/>},
         {path:"/appointment", element:<AppiomentClient/>},
         {path:"/appointmentsTable", element:<AppoimennsTable/>},
         {path:"/appointment/new", element:<FormAppointment/>},

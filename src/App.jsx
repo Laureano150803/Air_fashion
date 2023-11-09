@@ -4,6 +4,7 @@ import LittleOfUs from "./components/LittleOfUs"
 import ImageGallery from "./components/ImageGallery"
 import CardsHairdresser from "./components/CardsHairdresser"
 import CardService3D from "./components/CardService3D"
+import Sidebar from "./components/Sidebar"
 
 
 function App() {
@@ -28,12 +29,10 @@ function App() {
           <CardService3D />
         </div>
       </div>
-     
 
-
-
-
-
+      <div>
+        <Sidebar/>
+      </div>
     </>
   )
 }
