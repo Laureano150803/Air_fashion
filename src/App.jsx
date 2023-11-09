@@ -1,8 +1,5 @@
 import HomeCarrucel from "./components/HomeCarrucel"
 import './app.css'
-import axios from "axios"
-import { useEffect, useState } from "react"
-import apiUrl from "../api"
 import LittleOfUs from "./components/LittleOfUs"
 import ImageGallery from "./components/ImageGallery"
 import CardsHairdresser from "./components/CardsHairdresser"
@@ -11,15 +8,6 @@ import Sidebar from "./components/Sidebar"
 
 
 function App() {
-
-  const [services, setServices] = useState([])
-
-  useEffect(() => {
-    axios.get(apiUrl + 'services').then(res => setServices(res.data.Response)).catch(res => console.log(res))
-  }, [])
-
-  console.log(services)
-
 
   return (
     <>
