@@ -9,6 +9,7 @@ import FormAppointment from "../components/FormAppoiment";
 import AboutUs from "../components/AboutUs";
 import DetailTypeService from "../components/DetailTypeService";
 import Contact from "../components/Contact";
+import AppoimennsTable from '../components/AppointmentsTable.jsx';
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
         {path: "/AboutUs" , element:<AboutUs/>},
         {path: "/Contact" , element:<Contact/>},
         {path:"/appointment", element:<AppiomentClient/>},
+        {path:"/appointmentsTable", element:<AppoimennsTable/>},
         {path:"/appointment/new", element:<FormAppointment/>},
         {path:"/detail/:id/:genero", element:<DetailTypeService/>}
 
