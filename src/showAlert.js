@@ -4,7 +4,7 @@ const showSwalAlert = (icon, title) => {
       toast: true,
       position: 'bottom-start',
       showConfirmButton: false,
-      timer: 1000,
+      timer:5000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer);

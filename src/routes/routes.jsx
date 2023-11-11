@@ -12,6 +12,7 @@ import Contact from "../components/Contact";
 import AppoimennsTable from '../components/AppointmentsTable.jsx';
 import ListHairdresser from "../components/ListHairdresser.jsx";
 import CrudService from "../components/CrudService.jsx";
+import PaymentApproveAndAppointment from "../components/PaymentApproveAndAppointment.jsx";
 const router = createBrowserRouter([
     {
       
@@ -28,7 +29,8 @@ const router = createBrowserRouter([
         {path:"/appointment", element:<AppiomentClient/>},
         {path:"/appointmentsTable", element:<AppoimennsTable/>},
         {path:"/appointment/new", element:<FormAppointment/>},
-        {path:"/detail/:id/:genero", element:<DetailTypeService/>}
+        {path:"/detail/:id/:genero", element:<DetailTypeService/>},
+        {path:"/your-appointment", element:<PaymentApproveAndAppointment/>}
 
       ]
     },

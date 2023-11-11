@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mercadopago/sdk-react": "^0.0.15",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "dayjs": "^1.11.10",
     "gapi": "^0.0.3",
     "gapi-script": "^1.2.0",
+    "qrcode-generator": "^1.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-login": "^5.2.2",
