@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import apiUrl from '../../api';
 import dayjs from 'dayjs';
+
 export default function FormAppointment() {
   const token = localStorage.getItem('token');
   const headers = { headers: { 'authorization': `Bearer ${token}` } };
@@ -101,7 +102,6 @@ export default function FormAppointment() {
   }, [selectedHour, hasSelectedHour]);
 
 
-  
   return (
     <div className='min-h-screen flex justify-evenly'>
 
