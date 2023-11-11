@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import apiUrl from '../../api'
+
 import '../backgroundSlider.css';
 
 
@@ -25,7 +26,6 @@ const ListHairdresser = () => {
     }
 
 
-
     let email = useRef()
     let contaseña = useRef()
     let nombre = useRef()
@@ -47,11 +47,12 @@ const ListHairdresser = () => {
         }).catch(res => console.log(res))
 
     }
-    
+
     function crearPeluquero(e) {
         if (e) {
             e.preventDefault()
         }
+
         const data = new FormData()
         data.append('email', email.current.value)
         data.append('nombre', nombre.current.value)
@@ -60,6 +61,7 @@ const ListHairdresser = () => {
         data.append('foto', foto.current.files[0])
         data.append('cedula', cedula.current.value)
 
+
         const token = localStorage.getItem("token");
         const headers = { headers: { 'authorization': `Bearer ${token}` } };
 
@@ -67,6 +69,7 @@ const ListHairdresser = () => {
 
 
     }
+
     function edictHairdresser(e){
         const token = localStorage.getItem("token");
         const headers = { headers: { 'authorization': `Bearer ${token}` } };
@@ -92,6 +95,7 @@ const ListHairdresser = () => {
             setfuncion(edictHairdresser())
         }
     }
+
     const [peluqueros, setpeluqueros] = useState([])
     useEffect(() => {
 
@@ -104,12 +108,14 @@ const ListHairdresser = () => {
     return (
         <>
             <div classNameName="w-[100vw] h-[100vh]  ">
+
                 <div className="flex justify-evenly items-center min-h-screen ">
 
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-[55%] rounded-xl">
                         <div className="flex items-center justify-around py-4 bg-gradient-to-r from-cyan-500 to-blue-500  ">
 
                             <button onClick={()=>accionPeluquero(1)} className="flex justify-center  items-center gap-x-2 transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 w-60 p-2 rounded-lg hover:text-white ">
+
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -127,7 +133,9 @@ const ListHairdresser = () => {
                                 <input type="text" id="table-search-users" className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for users" />
                             </div>
                         </div>
+
                         <table className="w-full text-sm text-left dark:text-gray-400 ">
+
                             <thead className="text-base  uppercase bg-gray-100  dark:text-violet-600">
                                 <tr>
 
@@ -148,7 +156,9 @@ const ListHairdresser = () => {
                             <tbody>
 
                                 {peluqueros.map((peluquero) => (
+
                                     <tr key={peluquero._id} className="bg-white border-t  dark:border-blue-200 hover:text-white dark:hover:bg-gradient-to-r from-cyan-500 to-blue-500 ">
+
 
                                         <th scope="row" className="flex hover:text-white items-center px-6 py-4 font-medium  dark:text-black">
                                             <img className="w-10 h-10 rounded-full" src={peluquero.foto} />
@@ -165,6 +175,7 @@ const ListHairdresser = () => {
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="flex gap-x-4 items-center ">
+
                                                 <svg
                                                     value={peluquero._id}
                                                     onClick={(e) => {
@@ -187,6 +198,7 @@ const ListHairdresser = () => {
                                                 </svg>
 
 
+
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-red-600 ">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                                                 </svg>
@@ -198,6 +210,7 @@ const ListHairdresser = () => {
                         </table>
 
                     </div>
+
 
                     {isOpen && (
                         <div className="w-[35%] mt-5 flex flex-col gap-6 shadow-2xl animate-fade-left animate-duration-[4000ms] ">
@@ -254,6 +267,7 @@ const ListHairdresser = () => {
 
                         </div>
                     )}
+
                 </div>
 
             </div>
