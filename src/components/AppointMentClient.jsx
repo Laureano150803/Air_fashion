@@ -23,17 +23,17 @@ export default function AppiomentClient() {
       .then((res) => {
         showSwalAlert('success', 'Choose your appointment!');
         let url = res.data.redirect;
-        
+
         // Abre una nueva ventana emergente con la URL
         window.open(url, 'popupWindow', 'width=600, height=800, scrollbars=yes');
       })
-      .then( navigate('/appointment/new'))
+      .then(navigate('/appointment/new'))
       .catch((error) => {
         showSwalAlert('error', 'Something went wrong');
         navigate('/'); // Navega a la ruta '/appointment' en la misma ventana.
       });
   }
-  
+
 
   const openModal = () => {
     setIsOpen(true);
@@ -47,17 +47,18 @@ export default function AppiomentClient() {
 
   return (
     <div>
-      {role === '1' ? (
+      {role === '1' &&
         <div className="">
           <button className=" wrapper rounded" onClick={confirmAccount}>
-          <span></span>
+            <span></span>
             <span></span>
             <span></span>
             <span></span>
             make an appointment
           </button>
-        </div>
-      ) : (
+        </div>}
+
+      {role === '0' &&
         <div className="">
           <button className="wrapper rounded" onClick={openModal}>
             <span></span>
@@ -71,13 +72,24 @@ export default function AppiomentClient() {
               <div className="modal">
                 <h1>Modal Content</h1>
                 <div className="bg-white p-5 flex justify-center items-center z-50">
-                  <ClientsForm cerrar={closeModal}  />
+                  <ClientsForm cerrar={closeModal} />
                 </div>
               </div>
             </div>
           )}
         </div>
-      )}
+      }
+      {!role &&
+        <div className="">
+          <button className="wrapper rounded" onClick={() => navigate('/signin')}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            make an appointment
+          </button>
+        </div>
+      }
     </div>
   );
 }
