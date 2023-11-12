@@ -66,18 +66,24 @@ export default function Navbar() {
               <Link to="/" className="hover:text-violet-800 hover:border-b-2 cursor-pointer transition duration-700">
                 Home
               </Link>
-              {role  ? ( <Link to="/ClientsForm" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
-                Schedule appointment
-              </Link>):('')}
+              {role==='1'  && <Link to="/ClientsForm" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
+                Check the Haidressers calendar
+              </Link>}
               <Link to="#" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Services
               </Link>
+              {role==='2' &&
+               <Link to="/hairdresser" className="hover:text-violet-800 hover:border-b-2 transition text-black font-bold duration-700">
+                HairDresser Panel
+              </Link> }
               <Link to="/AboutUs" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 About us
               </Link>
+              {role!='2'?(
               <Link to="/Contact" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Contact
-              </Link>
+              </Link>):('')
+                }
               {!role ? (
                 <Link to="/signin" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                   Log In
