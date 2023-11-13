@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import apiUrl from '../../api'
+import { UpdateHairdresser } from './UpdateHairdresser';
 import '../backgroundSlider.css';
 
 
@@ -9,10 +10,7 @@ const ListHairdresser = () => {
     const [idvalue, setidvalue] = useState('');
     const [title, settitle] = useState('')
     const [isOpen, setisOpen] = useState(false);
-    const [funcion, setfuncion] = useState()
-
-    console.log(funcion)
-
+    const [openUpd, setOpenUpd]=useState(false)
     const openModal = () => {
 
         
@@ -23,6 +21,7 @@ const ListHairdresser = () => {
     const closeModal = () => {
         setisOpen(false);
     }
+    
 
 
     let email = useRef()
@@ -65,31 +64,10 @@ const ListHairdresser = () => {
 
 
     }
-    function edictHairdresser(e){
-        const token = localStorage.getItem("token");
-        const headers = { headers: { 'authorization': `Bearer ${token}` } };
-        e.preventDefault()
-        const data = new FormData()
-        data.append('email', email.current.value)
-        data.append('nombre', nombre.current.value)
-        data.append('apellido', apellido.current.value)
-        data.append('telefono', telefono.current.value)
-        data.append('foto', foto.current.files[0])
-        data.append('cedula', cedula.current.value)
-        axios.put(apiUrl + `peluqueros/${idvalue}`, data,headers ).then(res =>console.log(res)).catch(res=>console.log(res))
 
-    }
-    function accionPeluquero(order){
-        if(order === 1){
-            openModal()
+   
+  
 
-            setfuncion(asignaremail())
-        }
-        if(order === 2){
-            openModal()
-            setfuncion(edictHairdresser())
-        }
-    }
     const [peluqueros, setpeluqueros] = useState([])
     useEffect(() => {
 
@@ -97,7 +75,27 @@ const ListHairdresser = () => {
 
     }, [])
 
-
+    function checkAndOpenModalcreate(){
+        if (openUpd) {
+            closeUpdModal()
+            openModal()
+        }
+        openModal()
+    }
+    function checkAndOpenModalUpd(){
+        if(isOpen){
+            closeModal()
+            openUpdModal()
+        }
+        openUpdModal()
+    }
+    function openUpdModal(){
+        setOpenUpd(true)
+    }
+    function closeUpdModal(){
+        setOpenUpd(false)
+    }
+    console.log(openUpd)
 
     return (
         <>
@@ -107,7 +105,8 @@ const ListHairdresser = () => {
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-[55%] rounded-xl">
                         <div className="flex items-center justify-around py-4 bg-gradient-to-r from-cyan-500 to-blue-500  ">
 
-                            <button onClick={()=>accionPeluquero(1)} className="flex justify-center  items-center gap-x-2 transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 w-60 p-2 rounded-lg hover:text-white ">
+                            <button onClick={checkAndOpenModalcreate} className="flex justify-center  items-center gap-x-2 transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 w-60 p-2 rounded-lg hover:text-white ">
+
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -172,7 +171,7 @@ const ListHairdresser = () => {
                                                     onClick={(e) => {
                                                         const id = e.currentTarget.getAttribute("value");
                                                         setidvalue(id);
-                                                        accionPeluquero(2)
+                                                        checkAndOpenModalUpd()
                                                     }}
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
@@ -213,7 +212,7 @@ const ListHairdresser = () => {
                                 </div>
                             </div>
 
-                            <form onSubmit={()=>funcion } className='m-6'>
+                            <form onSubmit={crearPeluquero} className='m-6'>
                                 <div className="relative z-0 w-full mb-6 group" >
                                     <input ref={email} type="email" name="floating_email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                                     <label for="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
@@ -256,6 +255,8 @@ const ListHairdresser = () => {
 
                         </div>
                     )}
+                    {openUpd && <UpdateHairdresser close={closeUpdModal} id={idvalue}/>}
+
                 </div>
 
             </div>
