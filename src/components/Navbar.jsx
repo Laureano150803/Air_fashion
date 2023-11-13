@@ -1,16 +1,38 @@
 import { Link } from "react-router-dom";
 import logo from '../assets/images/logo.png';
 import logo3 from '../assets/images/logo2.png';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import apiUrl from '../../api.js';
 import { useNavigate } from "react-router-dom";
 import showSwalAlert from "../showAlert";
 import NavbarMobile from './NavbarMobile';
-import { headers } from "../headers";
 import '../backgroundSlider.css';
 
 export default function Navbar() {
+  const token = localStorage.getItem('token');
+  const headers = { headers: { 'authorization': `Bearer ${token}` } };
+
+
+  const checkToken = async () => {
+    try {
+      await axios.get(apiUrl + 'auth', headers);
+    } catch (error) {
+      localStorage.clear();
+      
+     window.scrollTo(0, 100);
+      
+      await new Promise(resolve => setTimeout(resolve, 1000));
+     
+      window.scrollTo(0, 0);
+    }
+  };
+
+  useEffect(() => {
+    checkToken()
+  }, [token]);
+
+
   const [option, setOption] = useState(false);
 
   function handleMenu() {
@@ -66,24 +88,24 @@ export default function Navbar() {
               <Link to="/" className="hover:text-violet-800 hover:border-b-2 cursor-pointer transition duration-700">
                 Home
               </Link>
-              {role==='1'  && <Link to="/ClientsForm" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
+              {role === '1' && <Link to="/ClientsForm" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Check the Haidressers calendar
               </Link>}
               <Link to="#" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Services
               </Link>
-              {role==='2' &&
-               <Link to="/hairdresser" className="hover:text-violet-800 hover:border-b-2 transition text-black font-bold duration-700">
-                HairDresser Panel
-              </Link> }
+              {role === '2' &&
+                <Link to="/hairdresser" className="hover:text-violet-800 hover:border-b-2 transition text-black font-bold duration-700">
+                  HairDresser Panel
+                </Link>}
               <Link to="/AboutUs" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 About us
               </Link>
-              {role!='2'?(
-              <Link to="/Contact" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
-                Contact
-              </Link>):('')
-                }
+              {role != '2' ? (
+                <Link to="/Contact" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
+                  Contact
+                </Link>) : ('')
+              }
               {!role ? (
                 <Link to="/signin" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                   Log In
@@ -99,8 +121,8 @@ export default function Navbar() {
             {option && (<NavbarMobile backHome={backHome} estado={handleMenu} />)}
           </div>
         </div>
-      </div>  
-      </>
-      )
+      </div>
+    </>
+  )
 }
 
