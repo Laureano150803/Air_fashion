@@ -25,7 +25,6 @@ const ListHairdresser = () => {
     }
 
 
-
     let email = useRef()
     let contaseña = useRef()
     let nombre = useRef()
@@ -47,7 +46,6 @@ const ListHairdresser = () => {
         }).catch(res => console.log(res))
 
     }
-    
     function crearPeluquero(e) {
         if (e) {
             e.preventDefault()
@@ -127,7 +125,9 @@ const ListHairdresser = () => {
                                 <input type="text" id="table-search-users" className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500  dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for users" />
                             </div>
                         </div>
+
                         <table className="w-full text-sm text-left dark:text-gray-400 ">
+
                             <thead className="text-base  uppercase bg-gray-100  dark:text-violet-600">
                                 <tr>
 
@@ -148,7 +148,9 @@ const ListHairdresser = () => {
                             <tbody>
 
                                 {peluqueros.map((peluquero) => (
+
                                     <tr key={peluquero._id} className="bg-white border-t  dark:border-blue-200 hover:text-white dark:hover:bg-gradient-to-r from-cyan-500 to-blue-500 ">
+
 
                                         <th scope="row" className="flex hover:text-white items-center px-6 py-4 font-medium  dark:text-black">
                                             <img className="w-10 h-10 rounded-full" src={peluquero.foto} />

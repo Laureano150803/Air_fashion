@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import apiUrl from '../../api';
 import dayjs from 'dayjs';
-
+import BuyBtn from './BuyBtn';
+import showSwalAlert from '../showAlert';
 export default function FormAppointment() {
+
+
+
   const token = localStorage.getItem('token');
   const headers = { headers: { 'authorization': `Bearer ${token}` } };
   const [idPeluquero, setIdPeluquero] = useState('');
@@ -13,6 +17,7 @@ export default function FormAppointment() {
   const [services, setServices] = useState([]);
   const [idService, setIdService] = useState('');
   const [nameService, setNameService] = useState('');
+
 
   // Servicios seleccionados para renderizarlos en la carta
   const [selectedServiceImage, setSelectedServiceImage] = useState(null);
@@ -24,6 +29,9 @@ export default function FormAppointment() {
   const [selectedHairdresserName, setSelectedHairdresserName] = useState('');
   const [selectedHairdresserLastName, setSelectedHairdresserLastName] = useState('');
   const [selectedHairdresserEmail, setSelectedHairdresserEmail] = useState('');
+
+  //controlar el metodo de pago
+  const [metodoDePago, setMetodoDePago] = useState('');
 
 
   const currentHour = dayjs().hour();
@@ -66,12 +74,16 @@ export default function FormAppointment() {
     const data = {
       inicio: dayjs(`${currentYear}-${currentMonth}-${currentDay}T${selectedHour}:00`).format('YYYY-MM-DDTHH:mm:ss').toString(),
       peluquero_id: idPeluquero,
+      metodoPago: metodoDePago,
       servicio_id: idService,
       description: nameService
     };
 
     axios.post(apiUrl + 'google/new/appointment', data, headers)
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res)
+        showSwalAlert('success', 'Your appointment has been created')}
+        )
       .catch(err => console.log(err));
   }
 
@@ -92,6 +104,8 @@ export default function FormAppointment() {
       console.error('Error al obtener peluqueros disponibles', error);
     }
   }
+
+
 
   useEffect(() => {
     axios.get(apiUrl + 'services').then(res => setServices(res.data.Response)).catch(res => console.log(res))
@@ -134,8 +148,8 @@ export default function FormAppointment() {
             </div>
           </div>
         )}
-        <div className='flex items-center'>
-          <form onSubmit={handleAppointment} className='shadow-md shadow-blue-400/40 rounded-xl flex justify-evenly flex-col  min-h-[25rem] '>
+        <div className='flex flex-col items-center  justify-center'>
+          <form  className='shadow-md shadow-blue-400/40 rounded-xl flex justify-evenly flex-col  min-h-[25rem]'>
             <select
               className='rounded-md text-center font-serif text-css-h1 focus:outline-none focus:ring focus:border-blue-300'
               onChange={(e) => {
@@ -197,17 +211,29 @@ export default function FormAppointment() {
                 </option>
               ))}
             </select>
+            <select onChange={(e) => setMetodoDePago(e.target.value)} className='rounded-md text-center font-serif text-css-h1 focus:outline-none focus:ring focus:border-blue-300'>
+              <option value="">payment method</option>
+              <option value="pago en caja">Cash payment</option>
+              <option value="pago elecetronico"> Electronic Payment</option>
+            </select>
 
-            <button type='submit' className='makeAppoiment cursor-pointer rounded-xl'>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              Make my appointment
-            </button>
+            {metodoDePago === 'pago en caja' &&
+              <button onClick={handleAppointment} type='submit' className='makeAppoiment cursor-pointer rounded-xl'>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Make my appointment
+              </button>}
+
           </form>
+          {metodoDePago === 'pago elecetronico' && <BuyBtn  servicename={nameService} price={selectedServicePrice} idPelu={idPeluquero} metododepago={metodoDePago} servicioId={idService} hora={selectedHour}/>}
         </div>
+
+
       </div>
+
+
 
 
     </div>
