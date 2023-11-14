@@ -7,9 +7,11 @@ import apiUrl from '../../api.js';
 import { useNavigate } from "react-router-dom";
 import showSwalAlert from "../showAlert";
 import NavbarMobile from './NavbarMobile';
+import Swal from "sweetalert2";
 import '../backgroundSlider.css';
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const headers = { headers: { 'authorization': `Bearer ${token}` } };
 
@@ -25,6 +27,8 @@ export default function Navbar() {
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       window.scrollTo(0, 0);
+
+      navigate('/')
     }
   };
 
@@ -39,7 +43,7 @@ export default function Navbar() {
     setOption(!option);
   }
 
-  const navigate = useNavigate();
+  
   const role = localStorage.getItem("role");
   function backHome() {
     axios.post(apiUrl + 'users/signout', null, headers)
