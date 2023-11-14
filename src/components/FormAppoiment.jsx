@@ -82,9 +82,9 @@ export default function FormAppointment() {
     axios.post(apiUrl + 'google/new/appointment', data, headers)
       .then(res => {
         console.log(res)
-        showSwalAlert('success', 'Your appointment has been created')
-      }
-      )
+        location.reload()
+        showSwalAlert('success', 'Your appointment has been created')}
+        )
       .catch(err => console.log(err));
   }
 

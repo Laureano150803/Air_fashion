@@ -12,7 +12,6 @@ const ListHairdresser = () => {
     const headers = { headers: { 'authorization': `Bearer ${token}` } };
 
     const [idvalue, setidvalue] = useState('');
-    const [title, settitle] = useState('')
     const [isOpen, setisOpen] = useState(false);
     const [openUpd, setOpenUpd] = useState(false)
     const [updateData, setUpdateData] = useState(true);
@@ -155,7 +154,7 @@ const ListHairdresser = () => {
 
                             <button onClick={checkAndOpenModalcreate} className="flex justify-center  items-center gap-x-2 transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 w-60 p-2 rounded-lg hover:text-white ">
 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 <h1 className='text-base uppercase'>Add new Hair Dresser</h1>
@@ -226,7 +225,7 @@ const ListHairdresser = () => {
                                                     viewBox="0 0 24 24"
                                                     stroke-width="1.5"
                                                     stroke="currentColor"
-                                                    class="w-6 h-6 stroke-purple-600"
+                                                    className="w-6 h-6 stroke-purple-600 cursor-pointer"
                                                 >
                                                     <path
                                                         stroke-linecap="round"
@@ -244,7 +243,7 @@ const ListHairdresser = () => {
                                                         setidvalue(id)
                                                     }}
                                                     onDoubleClick={deleteHairdresser}
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-red-600 ">
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 stroke-red-600 cursor-pointer ">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                                                 </svg>
                                             </div>
@@ -260,8 +259,8 @@ const ListHairdresser = () => {
                         <div className="w-[35%] mt-5 flex flex-col gap-6 shadow-2xl animate-fade-left animate-duration-[4000ms] ">
                             <div className="modal-header bg-gradient-to-r from-cyan-500 to-blue-500 py-4 rounded-xl ">
                                 <div className=" flex justify-between items-center">
-                                    <h1 className='text-3xl text-white ml-4 text-css'>{title} hola mundo </h1>
-                                    <svg onClick={closeModal} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 stroke-white mr-4 cursor-pointer" >
+                                    <h1 className='text-3xl text-white ml-4 text-css'> Create New HairDresser</h1>
+                                    <svg onClick={closeModal} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-8 h-8 stroke-white mr-4 cursor-pointer" >
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
 
@@ -302,16 +301,26 @@ const ListHairdresser = () => {
                                     </div>
                                 </div>
 
-                                <div className="relative z-0 w-full mb-6 group">
-                                    <input ref={foto} type="file" name="floating_company" id="floating_company" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                                    <label for="floating_company" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">photo</label>
+
+                                <div className="flex items-center justify-center w-full mb-8">
+                                    <label ref={foto} for="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100">
+                                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                            </svg>
+                                            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                            <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                        </div>
+                                        <input id="dropzone-file" type="file" className="hidden" />
+                                    </label>
                                 </div>
+
                                 <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                             </form>
 
                         </div>
                     )}
-                    {openUpd && <UpdateHairdresser close={closeUpdModal} id={idvalue} reload={setUpdateData}/>}
+                    {openUpd && <UpdateHairdresser close={closeUpdModal} id={idvalue} reload={setUpdateData} />}
 
                 </div>
 
