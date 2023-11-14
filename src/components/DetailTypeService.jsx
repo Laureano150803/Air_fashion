@@ -22,7 +22,7 @@ export default function DetailTypeService() {
       Genero = 'https://img.freepik.com/foto-gratis/mujer-salon-peluqueria_144627-8915.jpg?w=740&t=st=1698955130~exp=1698955730~hmac=a45a8cecb89093ce0f8bd07ec1f237c589c461753bed05ddf3a8d819ea919c46';
       break;
     case 'Children':
-      Genero = 'https://www.clara.es/medio/2021/10/08/cortes-pelo-nino_7aefb7c4_1280x1927.jpg';
+      Genero = 'https://st4allthings4p4ci.blob.core.windows.net/allthingshair/allthingshair/wp-content/uploads/sites/13/2023/03/15203013/corte-de-pelo-el-7-colombiano-2.jpg';
       break;
     case 'Girls':
       Genero = 'https://img.freepik.com/foto-gratis/chica-guapa-pinzas-cabello_23-2148843733.jpg?w=740&t=st=1698688334~exp=1698688934~hmac=b237375eab9fcc3c2551ba4499dd25f12905d69c99da7fd45c973230658cd251';
@@ -36,7 +36,7 @@ export default function DetailTypeService() {
     <>
       <div className="flex justify-evenly w-[100%] ">
 
-        <div className="flex justify-between w-[40rem] h-[70rem] bg-no-repeat  rounded-2xl m-10 " style={{backgroundImage:`url("${Genero}")`}}>
+        <div className="flex justify-between w-[40rem] h-[70rem] bg-no-repeat bg-center bg-cover rounded-2xl m-10 " style={{backgroundImage:`url("${Genero}")`}}>
       
 
         </div>
