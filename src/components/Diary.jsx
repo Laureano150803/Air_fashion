@@ -58,6 +58,7 @@ const Diary = () => {
                                         <div className="flex gap-4 items-center divide-x-2 ">
 
 
+
                                             <h1>{ dayjs(agendas.inicio).format('MMMM/DD/HH:mm')}</h1>
 
                                             <div className="flex gap-2 pl-5 items-center">
@@ -81,6 +82,7 @@ const Diary = () => {
 
                 </div>
 
+
                 <div className=" w-[30rem] flex flex-col justify-center text-white items-center h-[100vh] bg-cover" style={{backgroundImage:`url('${barber}')`}}>
                     <div className="">
 
@@ -90,6 +92,7 @@ const Diary = () => {
 
                     <AppiomentClient />
                     </div>
+
                 </div>
 
             </div>
