@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import Swal from 'sweetalert2';
 import '../scroll.css'
 import TableOfCalendar from './TableOfCalendar';
+
 export default function HairDresserPanel() {
   const token = localStorage.getItem('token');
   const headers = { headers: { 'authorization': `Bearer ${token}` } };
@@ -171,6 +172,7 @@ export default function HairDresserPanel() {
 
                     <div className="flex gap-4 items-center divide-x-2 ">
                       <h1>{dayjs(citas.inicio).format('MMMM/DD/HH:mm')}</h1>
+
                       <div className="flex gap-2 pl-5 items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 stroke-2">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
