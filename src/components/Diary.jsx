@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import apiUrl from '../../api'
 import '../backgroundSlider.css';
 import service from '/src/assets/images/service.png'
-
+import TableOfCalendar from './TableOfCalendar';
 
 
 
@@ -13,11 +13,12 @@ const Diary = () => {
     useEffect(() => {
         axios.get(apiUrl + 'google/pending/appointments').then(res => setagenda(res.data.Response)).catch(error => console.log(error));
     }, [])
+    console.log(agenda)
     return (
         <>
             <div className="min-h-screen ">
-
-                <div className="p-7  w-[70rem] sticky ">
+            <div className=" flex items-center justify-evenly">
+                <div className="p-7  w-[65rem] sticky ">
                     <div className="flex flex-col ">
                         <div className="bg-slate-50 p-7">
 
@@ -48,14 +49,17 @@ const Diary = () => {
                                         </svg>
 
 
+
+
                                         <div className="flex gap-4 items-center divide-x-2 ">
 
                                             <h1>{agendas.createdAt}  </h1>
 
                                             <div className="flex gap-2 pl-5 items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 stroke-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 stroke-2">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                 </svg>
+
 
 
                                                 <h1>{agendas.status}</h1>
@@ -71,7 +75,11 @@ const Diary = () => {
                     </div>
 
                 </div>
-                
+                <div className=" w-[25rem]">
+                    <TableOfCalendar/>
+                </div>
+
+            </div>
             </div>
         </>
     )

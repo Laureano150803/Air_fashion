@@ -1,41 +1,74 @@
-import axios from 'axios'
-import apiUrl from '../../api'
-import { useRef } from 'react'
-export const UpdateHairdresser = ({close, id}) => {
-  let name = useRef()
-  let lastName = useRef()
-  let phone = useRef()
-  let ID = useRef()
-  let photo = useRef()
-  console.log(id)
+import axios from 'axios';
+import apiUrl from '../../api';
+import { useState } from 'react';
 
-  function edictHairdresser(e){
-    const token = localStorage.getItem("token");
-    const headers = { headers: { 'authorization': `Bearer ${token}` } };
-    e.preventDefault()
-    const data = new FormData()
-    data.append('nombre', name.current.value)
-    data.append('apellido', lastName.current.value)
-    data.append('telefono', phone.current.value)
-    data.append('foto', photo.current.files[0])
-    data.append('cedula', ID.current.value)
-    axios.patch(apiUrl + `peluqueros/${id}`, data,headers ).then(res =>console.log(res)).catch(res=>console.log(res))
+export const UpdateHairdresser = ({ close, id, reload}) => {
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [ID, setID] = useState('');
 
-}
+  function edictHairdresser(e) {
+    e.preventDefault();
+
+    const token = localStorage.getItem('token');
+    const headers = { headers: { authorization: `Bearer ${token}` } };
+
+
+    // Check if the fields are empty before adding them to the data object
+    const data = {};
+    if (name.trim() !== '') {
+      data.nombre = name.trim();
+    }
+    if (lastName.trim() !== '') {
+      data.apellido = lastName.trim();
+    }
+    if (phone.trim() !== '') {
+      data.telefono = phone.trim();
+    }
+    if (ID.trim() !== '') {
+      data.cedula = ID.trim();
+    }
+    reload(true)
+
+    axios
+      .patch(apiUrl + `peluqueros/${id}`, data, headers)
+      .then((res) => console.log(res))
+      .catch((error) => console.error(error));
+  }
+
   return (
     <div>
       <div onClick={close} className='cursor-pointer'>
         X
       </div>
-        <form className='flex flex-col'>
-            <input ref={name} type="text" placeholder='Nombre' />
-            <input ref={lastName} type="text" placeholder='Apellido'/>
-            <input ref={ID} type="text" placeholder='Cedula'/>
-            <input ref={photo} type="file" placeholder='Foto' />
-            <input ref={phone} type="text" placeholder='Telefono'/>
-            <input type="submit" value="Update" onClick={edictHairdresser} />
-        </form>
-
+      <form className='flex flex-col' onSubmit={edictHairdresser}>
+        <input
+          type='text'
+          placeholder='Nombre'
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type='text'
+          placeholder='Apellido'
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <input
+          type='text'
+          placeholder='Cedula'
+          value={ID}
+          onChange={(e) => setID(e.target.value)}
+        />
+        <input
+          type='text'
+          placeholder='Telefono'
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+        <input type='submit' value='Update' />
+      </form>
     </div>
-  )
-}
+  );
+};

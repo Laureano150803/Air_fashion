@@ -2,18 +2,23 @@ import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import apiUrl from '../../api'
 import { UpdateHairdresser } from './UpdateHairdresser';
+import Swal from 'sweetalert2';
 import '../backgroundSlider.css';
+import showSwalAlert from '../showAlert';
 
 
 const ListHairdresser = () => {
-   
+    const token = localStorage.getItem("token");
+    const headers = { headers: { 'authorization': `Bearer ${token}` } };
+
     const [idvalue, setidvalue] = useState('');
     const [title, settitle] = useState('')
     const [isOpen, setisOpen] = useState(false);
-    const [openUpd, setOpenUpd]=useState(false)
+    const [openUpd, setOpenUpd] = useState(false)
+    const [updateData, setUpdateData] = useState(true);
     const openModal = () => {
 
-        
+
 
         setisOpen(true);
     }
@@ -21,7 +26,7 @@ const ListHairdresser = () => {
     const closeModal = () => {
         setisOpen(false);
     }
-    
+
 
 
     let email = useRef()
@@ -57,45 +62,88 @@ const ListHairdresser = () => {
         data.append('foto', foto.current.files[0])
         data.append('cedula', cedula.current.value)
 
-        const token = localStorage.getItem("token");
-        const headers = { headers: { 'authorization': `Bearer ${token}` } };
 
-        axios.post(apiUrl + 'peluqueros/new', data, headers).then(res => console.log(res)).catch(res => console.log(res))
+
+        axios.post(apiUrl + 'peluqueros/new', data, headers).then(res => {
+            showSwalAlert('success', 'Hairdresser created')
+            setUpdateData(true)
+        })
+            .catch(res => showSwalAlert('error', 'Error creating Hairdresser'))
 
 
     }
 
-   
-  
+    const deleteHairdresser = async () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const token = localStorage.getItem("token");
+                const headers = { headers: { 'authorization': `Bearer ${token}` } };
+                axios.delete(apiUrl + `peluqueros/${idvalue}`, headers)  // Corregir la URL aquí
+                    .then(res => {
+                        setUpdateData(true);
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
+        });
+    };
+
 
     const [peluqueros, setpeluqueros] = useState([])
     useEffect(() => {
+        // Obtener la lista de peluqueros solo cuando updateData sea true
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(apiUrl + 'peluqueros');
+                setpeluqueros(response.data.Response);
+            } catch (error) {
+                console.error(error);
+            } finally {
+                // Después de obtener los datos, establecer updateData en false
+                setUpdateData(false);
+            }
+        };
 
-        axios.get(apiUrl + 'peluqueros').then(res => setpeluqueros(res.data.Response)).catch(res => console.log(res))
+        if (updateData) {
+            fetchData();
+        }
+    }, [updateData]);
 
-    }, [])
-
-    function checkAndOpenModalcreate(){
+    function checkAndOpenModalcreate() {
         if (openUpd) {
             closeUpdModal()
             openModal()
         }
         openModal()
     }
-    function checkAndOpenModalUpd(){
-        if(isOpen){
+    function checkAndOpenModalUpd() {
+        if (isOpen) {
             closeModal()
             openUpdModal()
         }
         openUpdModal()
     }
-    function openUpdModal(){
+    function openUpdModal() {
         setOpenUpd(true)
     }
-    function closeUpdModal(){
+    function closeUpdModal() {
         setOpenUpd(false)
     }
-    console.log(openUpd)
+
 
     return (
         <>
@@ -146,7 +194,7 @@ const ListHairdresser = () => {
                             </thead>
                             <tbody>
 
-                                {peluqueros.map((peluquero) => (
+                                {peluqueros?.map((peluquero) => (
 
                                     <tr key={peluquero._id} className="bg-white border-t  dark:border-blue-200 hover:text-white dark:hover:bg-gradient-to-r from-cyan-500 to-blue-500 ">
 
@@ -155,7 +203,7 @@ const ListHairdresser = () => {
                                             <img className="w-10 h-10 rounded-full" src={peluquero.foto} />
                                             <div className="pl-3 ">
                                                 <div className="text-base font-semibold">{`${peluquero.nombre} ${peluquero.apellido}`}</div>
-                                                <div className="font-medium text-sm ">{peluquero.user_id.email}</div>
+                                                <div className="font-medium text-sm ">{peluquero?.user_id?.email}</div>
                                             </div>
                                         </th>
                                         <td className="px-6 py-4">
@@ -188,7 +236,15 @@ const ListHairdresser = () => {
                                                 </svg>
 
 
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-red-600 ">
+
+                                                <svg
+                                                    value={peluquero._id}
+                                                    onClick={(e) => {
+                                                        const id = e.currentTarget.getAttribute("value");
+                                                        setidvalue(id)
+                                                    }}
+                                                    onDoubleClick={deleteHairdresser}
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-red-600 ">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                                                 </svg>
                                             </div>
@@ -212,7 +268,7 @@ const ListHairdresser = () => {
                                 </div>
                             </div>
 
-                            <form onSubmit={crearPeluquero} className='m-6'>
+                            <form onSubmit={asignaremail} className='m-6'>
                                 <div className="relative z-0 w-full mb-6 group" >
                                     <input ref={email} type="email" name="floating_email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                                     <label for="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
@@ -255,7 +311,7 @@ const ListHairdresser = () => {
 
                         </div>
                     )}
-                    {openUpd && <UpdateHairdresser close={closeUpdModal} id={idvalue}/>}
+                    {openUpd && <UpdateHairdresser close={closeUpdModal} id={idvalue} reload={setUpdateData}/>}
 
                 </div>
 
