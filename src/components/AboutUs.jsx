@@ -50,9 +50,9 @@ const AboutUs = () => {
 
                 </div>
             </div>
-          
 
-            <div className='flex items-center justify-center h-96 bg-fixed bg-parallax bg-cover'>
+
+            <div className='  flex items-center justify-center h-96 bg-fixed bg-parallax bg-cover'>
                 <h1 className=' text-5xl text-white uppercase' >
                     Customer service is a priority at our high-end salon
                 </h1>
@@ -61,22 +61,26 @@ const AboutUs = () => {
             <div>
                 <LittleOfUs />
             </div>
-            <div className='flex  justify-center  h-96 bg-fixed bg-parallax2 bg-cover'>
-               <div className="flex flex-col justify-center ">
+            <div className=' flex  justify-start h-96 bg-fixed bg-parallax2 bg-cover'>
+                <div className="flex flex-col justify-center pl-10 gap-3 ">
 
-                <h1 className=' text-2xl text-white aboutUs' >
-                    Customer service is a priority at our high-end salon
-                </h1>
-                <br /><br /><br /><br />
-                <button className="box bg-white  ">
-                    Explore all Services
-                </button>
-               </div>
+                    <h1 className=' text-2xl text-white aboutUs' >
+                        Customer service is a priority at our high-end salon
+                    </h1>
+                  
+                    <button className="wrapper  rounded-xl ">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Explore all Services
+                    </button>
+                </div>
 
             </div>
 
             <div>
-                <CardsHairdresser/>
+                <CardsHairdresser />
             </div>
 
 

@@ -50,12 +50,10 @@ const ListHairdresser = () => {
         }).catch(res => console.log(res))
 
     }
-
     function crearPeluquero(e) {
         if (e) {
             e.preventDefault()
         }
-
         const data = new FormData()
         data.append('email', email.current.value)
         data.append('nombre', nombre.current.value)
@@ -63,7 +61,6 @@ const ListHairdresser = () => {
         data.append('telefono', telefono.current.value)
         data.append('foto', foto.current.files[0])
         data.append('cedula', cedula.current.value)
-
 
 
 
@@ -151,7 +148,6 @@ const ListHairdresser = () => {
     return (
         <>
             <div classNameName="w-[100vw] h-[100vh]  ">
-
                 <div className="flex justify-evenly items-center min-h-screen ">
 
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-[55%] rounded-xl">
@@ -218,7 +214,6 @@ const ListHairdresser = () => {
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="flex gap-x-4 items-center ">
-
                                                 <svg
                                                     value={peluquero._id}
                                                     onClick={(e) => {
@@ -260,7 +255,6 @@ const ListHairdresser = () => {
                         </table>
 
                     </div>
-
 
                     {isOpen && (
                         <div className="w-[35%] mt-5 flex flex-col gap-6 shadow-2xl animate-fade-left animate-duration-[4000ms] ">

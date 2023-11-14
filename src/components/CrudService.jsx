@@ -15,9 +15,9 @@ const CrudService = () => {
   return (
     <>
       <div classNameName="w-[100vw] h-[100vh]  ">
-        <div className="flex justify-evenly items-center overflow-auto ">
+        <div className="flex justify-evenly items-center overflow-auto min-h-screen ">
 
-          <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-[55%] ">
+          <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-[65%] h-[600px] overflow-auto touch-pan-y  ">
             <div className="flex items-center justify-end py-4 bg-gradient-to-r from-cyan-500 to-blue-500  ">
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -51,8 +51,8 @@ const CrudService = () => {
                   </th>
                 </tr>
               </thead>
-
-              <tbody   >
+              
+              <tbody className='max-w-none h-auto'  >
                 {services.map((servicios) => (
 
 

@@ -2,9 +2,7 @@ import React from 'react'
 import logo1 from '/src/assets/images/polvo.png'
 import logo2 from '/src/assets/images/producto.png'
 import logo3 from '/src/assets/images/atencion1.png'
-import logo4 from '/src/assets/images/materiales.png'
-
-
+import logo4 from '/src/assets/images/materiales.png' 
 
 import '../backgroundSlider.css'
 
