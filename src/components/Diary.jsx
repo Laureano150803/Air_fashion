@@ -2,8 +2,12 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import apiUrl from '../../api'
 import '../backgroundSlider.css';
-import service from '/src/assets/images/service.png'
+import barber from '/src/assets/images/barber-man.jpg';
+import service from '/src/assets/images/service.png';
+import AppiomentClient from './AppointMentClient';
 import TableOfCalendar from './TableOfCalendar';
+import dayjs from 'dayjs';
+
 
 
 
@@ -53,7 +57,8 @@ const Diary = () => {
 
                                         <div className="flex gap-4 items-center divide-x-2 ">
 
-                                            <h1>{agendas.createdAt}  </h1>
+
+                                            <h1>{ dayjs(agendas.inicio).format('MMMM/DD/HH:mm')}</h1>
 
                                             <div className="flex gap-2 pl-5 items-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 stroke-2">
@@ -75,8 +80,16 @@ const Diary = () => {
                     </div>
 
                 </div>
-                <div className=" w-[25rem]">
+
+                <div className=" w-[30rem] flex flex-col justify-center text-white items-center h-[100vh] bg-cover" style={{backgroundImage:`url('${barber}')`}}>
+                    <div className="">
+
                     <TableOfCalendar/>
+                    </div>
+                    <div className="">
+
+                    <AppiomentClient />
+                    </div>
                 </div>
 
             </div>
