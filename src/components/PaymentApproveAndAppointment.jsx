@@ -9,7 +9,7 @@ export default function PaymentApproveAndAppointment() {
     const headers = { headers: { 'authorization': `Bearer ${token}` } };
     const navigate = useNavigate();
 
-    const [timer, setTimer] = useState(5); // Inicializa el temporizador en 5 segundos
+    const [timer, setTimer] = useState(5); 
 
     function crearCita() {
         const inicio = localStorage.getItem('inicio');

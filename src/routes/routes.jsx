@@ -13,6 +13,8 @@ import AppoimennsTable from '../components/AppointmentsTable.jsx';
 import ListHairdresser from "../components/ListHairdresser.jsx";
 import CrudService from "../components/CrudService.jsx";
 import PaymentApproveAndAppointment from "../components/PaymentApproveAndAppointment.jsx";
+import HairDresserPanel from "../components/HairDresserPanel.jsx";
+import Diary from "../components/Diary.jsx";
 const router = createBrowserRouter([
     {
       
@@ -26,11 +28,13 @@ const router = createBrowserRouter([
         {path: "/Contact" , element:<Contact/>},
         {path: "/CrudService" , element:<CrudService/>},
         {path: "/ListHairdresser" , element:<ListHairdresser/>},
+        {path: "/Diary" , element:<Diary/>},
         {path:"/appointment", element:<AppiomentClient/>},
         {path:"/appointmentsTable", element:<AppoimennsTable/>},
         {path:"/appointment/new", element:<FormAppointment/>},
         {path:"/detail/:id/:genero", element:<DetailTypeService/>},
-        {path:"/your-appointment", element:<PaymentApproveAndAppointment/>}
+        {path:"/your-appointment", element:<PaymentApproveAndAppointment/>},
+        {path:"/hairdresser", element:<HairDresserPanel/>}
 
       ]
     },

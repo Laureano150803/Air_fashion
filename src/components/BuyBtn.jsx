@@ -61,7 +61,7 @@ export default function BuyBtn({ servicename, price, idPelu, metododepago, servi
         <>
             {!preferenceId && (
                 <button
-                    className="makeAppoiment"
+                    className="makeAppoiment animate-flip-down"
                     onClick={createPreference}
                 >
                     PROCESS TO PAY

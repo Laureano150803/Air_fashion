@@ -82,6 +82,7 @@ export default function FormAppointment() {
     axios.post(apiUrl + 'google/new/appointment', data, headers)
       .then(res => {
         console.log(res)
+        location.reload()
         showSwalAlert('success', 'Your appointment has been created')}
         )
       .catch(err => console.log(err));
@@ -148,87 +149,95 @@ export default function FormAppointment() {
             </div>
           </div>
         )}
-        <div className='flex flex-col items-center  justify-center'>
-          <form  className='shadow-md shadow-blue-400/40 rounded-xl flex justify-evenly flex-col  min-h-[25rem]'>
-            <select
-              className='rounded-md text-center font-serif text-css-h1 focus:outline-none focus:ring focus:border-blue-300'
-              onChange={(e) => {
-                const selectedOption = e.target.options[e.target.selectedIndex];
-                setIdService(selectedOption.value);
-                setNameService(selectedOption.text);
-                setSelectedServiceImage(selectedOption.dataset.image);
-                setSelectedServicePrice(selectedOption.dataset.price);
-                setSelectedServiceDescription(selectedOption.dataset.description);
-                console.log(selectedOption)
-              }}
-            >
-              <option value="">Choose the service</option>
-              {services.map((service) => (
-                <option
-                  key={service._id}
-                  value={service._id}
-                  data-image={service.foto}
-                  data-price={service.precio}
-                  data-description={service.descripcion}
-                >
-                  {service.nombre}
-                </option>
-              ))}
-            </select>
-            <select className='rounded-md text-center font-serif text-css-h1 focus:outline-none focus:ring focus:border-blue-300' value={selectedHour} onChange={(e) => {
-              setSelectedHour(e.target.value);
-              setHasSelectedHour(e.target.value !== '');
-            }}>
-              <option value=''>Select the start time</option>
-              {availableHours.map((hour, index) => (
-                <option key={index} value={hour}>
-                  {hour}
-                </option>
-              ))}
-            </select>
-            <select
-              className='rounded-md text-center font-serif text-css-h1 focus:outline-none focus:ring focus:border-blue-300'
-              onChange={(e) => {
-                const selectedOption = e.target.options[e.target.selectedIndex];
-                setSelectedHairdresserImage(selectedOption.dataset.image);
-                setSelectedHairdresserName(selectedOption.dataset.nombre);
-                setSelectedHairdresserLastName(selectedOption.dataset.apellido);
-                setSelectedHairdresserEmail(selectedOption.dataset.email);
-                setIdPeluquero(e.target.value);
-              }}
-            >
-              <option>Select a hairdresser</option>
-              {peluquerosDisponibles.map((peluquero) => (
-                <option
-                  value={peluquero._id}
-                  key={peluquero._id}
-                  data-image={peluquero.foto}
-                  data-nombre={peluquero.nombre}
-                  data-apellido={peluquero.apellido}
-                  data-email={peluquero.user_id.email} // Accede al email del peluquero
-                >
-                  {peluquero.nombre} {peluquero.apellido}
-                </option>
-              ))}
-            </select>
-            <select onChange={(e) => setMetodoDePago(e.target.value)} className='rounded-md text-center font-serif text-css-h1 focus:outline-none focus:ring focus:border-blue-300'>
-              <option value="">payment method</option>
-              <option value="pago en caja">Cash payment</option>
-              <option value="pago elecetronico"> Electronic Payment</option>
-            </select>
 
-            {metodoDePago === 'pago en caja' &&
-              <button onClick={handleAppointment} type='submit' className='makeAppoiment cursor-pointer rounded-xl'>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Make my appointment
-              </button>}
 
-          </form>
-          {metodoDePago === 'pago elecetronico' && <BuyBtn  servicename={nameService} price={selectedServicePrice} idPelu={idPeluquero} metododepago={metodoDePago} servicioId={idService} hora={selectedHour}/>}
+
+        <div>
+          <div className='flex flex-col items-center  justify-center'>
+            <form className='shadow-md shadow-blue-400/40 rounded-xl flex justify-evenly flex-col  min-h-[25rem] ' >
+              <select
+                className='rounded-md text-center font-serif text-css-h1 focus:outline-none focus:ring focus:border-blue-300'
+                onChange={(e) => {
+                  const selectedOption = e.target.options[e.target.selectedIndex];
+                  setIdService(selectedOption.value);
+                  setNameService(selectedOption.text);
+                  setSelectedServiceImage(selectedOption.dataset.image);
+                  setSelectedServicePrice(selectedOption.dataset.price);
+                  setSelectedServiceDescription(selectedOption.dataset.description);
+                }}
+              >
+                <option value="">Choose the service</option>
+                {services.map((service) => (
+                  <option
+                    key={service._id}
+                    value={service._id}
+                    data-image={service.foto}
+                    data-price={service.precio}
+                    data-description={service.descripcion}
+                  >
+                    {service.nombre}
+                  </option>
+                ))}
+              </select>
+              <select className='rounded-md text-center font-serif text-css-h1 focus:outline-none focus:ring focus:border-blue-300' value={selectedHour} onChange={(e) => {
+                setSelectedHour(e.target.value);
+                setHasSelectedHour(e.target.value !== '');
+              }}>
+                <option value=''>Select the start time</option>
+                {availableHours.map((hour, index) => (
+                  <option key={index} value={hour}>
+                    {hour}
+                  </option>
+                ))}
+              </select>
+              <select
+                className='rounded-md text-center font-serif text-css-h1 focus:outline-none focus:ring focus:border-blue-300'
+                onChange={(e) => {
+                  const selectedOption = e.target.options[e.target.selectedIndex];
+                  setSelectedHairdresserImage(selectedOption.dataset.image);
+                  setSelectedHairdresserName(selectedOption.dataset.nombre);
+                  setSelectedHairdresserLastName(selectedOption.dataset.apellido);
+                  setSelectedHairdresserEmail(selectedOption.dataset.email);
+                  setIdPeluquero(e.target.value);
+                }}
+              >
+                <option>Select a hairdresser</option>
+                {peluquerosDisponibles.map((peluquero) => (
+                  <option
+                    value={peluquero._id}
+                    key={peluquero._id}
+                    data-image={peluquero.foto}
+                    data-nombre={peluquero.nombre}
+                    data-apellido={peluquero.apellido}
+                    data-email={peluquero.user_id.email} // Accede al email del peluquero
+                  >
+                    {peluquero.nombre} {peluquero.apellido}
+                  </option>
+                ))}
+              </select>
+              <select onChange={(e) => setMetodoDePago(e.target.value)} className='rounded-md text-center font-serif text-css-h1 focus:outline-none focus:ring focus:border-blue-300'>
+                <option value="">payment method</option>
+                <option value="cash payment">Cash payment</option>
+                <option value="electronic Payment"> Electronic Payment</option>
+              </select>
+
+
+
+            </form>
+
+          </div>
+          {metodoDePago === 'cash payment' &&
+            <button onClick={handleAppointment} type='submit' className='makeAppoiment cursor-pointer rounded-xl animate-flip-down'>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Make my appointment
+            </button>}
+          {metodoDePago === 'electronic Payment' && <BuyBtn servicename={nameService} price={selectedServicePrice} idPelu={idPeluquero} metododepago={metodoDePago} servicioId={idService} hora={selectedHour} />}
+
         </div>
+
 
 
       </div>
