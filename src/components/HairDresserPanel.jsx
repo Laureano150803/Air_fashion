@@ -43,7 +43,7 @@ export default function HairDresserPanel() {
           // Update the local state to re-render the component
           setCitas((prevCitas) => prevCitas.map(cita => {
             if (cita._id === id) {
-              return { ...cita, status: 'DONE' }; // Assuming 'Done' is the new status
+              return { ...cita, status: 'DONE' };
             }
             return cita;
           }));
