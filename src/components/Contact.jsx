@@ -43,17 +43,17 @@ const Contact = () => {
                             <div className="flex gap-5 flex-wrap  flex-col ">
                                 <div className="flex gap-3 items-center hover:text-cyan-400">
 
-                                    <img src={contact} className='h-14 w-14 ' />
+                                    <img src={contact} className='h-10 w-12 ' />
                                     <h1 className='text-lg'>Cl. 24 #8A-344, Getsemaní, Cartagena de Indias,Bolívar</h1>
                                 </div>
                                 <div className="flex gap-3 items-center  hover:text-cyan-400">
 
-                                    <img src={telefono} className='h-14 w-14' />
+                                    <img src={telefono} className='h-10 w-12' />
                                     <h1 className='text-lg'>+57 (350) 2246 718</h1>
                                 </div>
                                 <div className="flex gap-3 items-center">
 
-                                    <img src={email} className='h-14 w-14 ' />
+                                    <img src={email} className='h-10 w-12 ' />
                                     <h1 className='text-cyan-400 text-lg'>Hairfashion1526@gmail.com</h1>
                                 </div>
                             </div>
@@ -91,7 +91,6 @@ const Contact = () => {
                                         Message
                                     </label>
                                     <textarea className=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none" id="message"></textarea>
-                                    <p className="text-gray-600 text-xs italic">Re-size can be disabled by set by resize-none / resize-y / resize-x / resize</p>
                                 </div>
                             </div>
                             <div className="md:flex md:items-center">
