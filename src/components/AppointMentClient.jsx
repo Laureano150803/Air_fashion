@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import '../backgroundSlider.css';
 import ClientsForm from './ClientsForm.jsx';
+import '../TiltComponent.css';
+
 
 
 
@@ -68,10 +70,9 @@ export default function AppiomentClient() {
             make an appointment
           </button>
           {isOpen && (
-            <div className="modal-overlay">
-              <div className="modal">
-                <h1>Modal Content</h1>
-                <div className="bg-white p-5 flex justify-center items-center z-50">
+            <div className="flex justify-center items-center">
+              <div className="inset-0 w-[45%] rounded-2xl bg-black bg-opacity-30 backdrop-blur-sm justify-center items-center">
+                <div className="  p-5 flex justify-center items-center z-50">
                   <ClientsForm cerrar={closeModal} />
                 </div>
               </div>
