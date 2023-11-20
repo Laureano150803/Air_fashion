@@ -16,6 +16,7 @@ const TableOfCalendar = ({ onDateChange }) => {
 
   const handleDateChange = (newDate) => {
     setDate(newDate);
+
     // Solo llama a la función proporcionada por el padre si se proporciona
     onDateChange && onDateChange(newDate);
   };
