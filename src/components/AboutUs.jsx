@@ -4,11 +4,20 @@ import cliente from '../assets/images/cliente.jpg'
 import LittleOfUs from './LittleOfUs';
 import { Link } from 'react-router-dom';
 import CardsHairdresser from './CardsHairdresser';
-
+import useIntersection from './useIntersection';
 
 
 
 const AboutUs = () => {
+  
+    const [element , isIntersecting]= useIntersection({
+        threshold:1,
+    });
+    const [element2 , isIntersecting2]= useIntersection({
+        threshold:1,
+    });
+
+
     return (
         <>
             <div className="min-h-screen">
@@ -31,17 +40,18 @@ const AboutUs = () => {
 
                 </div>
 
-                <div className=" flex flex-wrap ">
+                <div className=" flex flex-wrap overflow-hidden ">
 
-                    <div className=" flex w-[50%] justify-center">
-                        <img className='rounded-lg' src={cliente} />
+                    <div ref={element} className=" flex w-[50%] justify-center">
+                        
+                        <img className={isIntersecting ? 'rounded-lg opacity-100  animate-fade-right animate-duration-[3000ms]  ':' rounded-lg animate-fade animate-duration-[1000ms] animate-alternate-reverse animate-fill-both ' }   src={cliente} />
                     </div>
 
-                    <div className=" flex flex-col w-[50%] justify-around ">
-                        <h1 className='aboutUs text-5xl '>
+                    <div ref={element2} className=" flex flex-col w-[50%] justify-around ">
+                        <h1 className={isIntersecting2 ? ' aboutUs text-5xl opacity-100 animate-fade-left animate-duration-[2000ms]':'aboutUs text-5xl animate-fade-down animate-duration-1000 animate-alternate-reverse animate-fill-both ' }>
                             A Few Words About Our Salon
                         </h1>
-                        <p className=' aboutUs text-xl'>
+                        <p className={isIntersecting2 ? ' aboutUs text-xl opacity-100 animate-fade-left animate-duration-[3000ms] animate-delay-[500ms] ':'aboutUs text-xl animate-fade-down animate-duration-1000 animate-alternate-reverse animate-fill-both ' }>
                             In our exclusive high-end beauty salon, excellence and sophistication meet to provide you with a unique experience in the care and transformation of your image. Our space has been meticulously designed to offer an atmosphere of luxury and elegance in every detail.
                             <br /><br />
                             From the moment you enter our salon, you are immersed in a world of beauty and well-being. Our decoration, with its modern and carefully selected design, creates an atmosphere of serenity and refinement. Every element, from the designer furniture to the soft, cozy lighting, has been chosen to offer maximum comfort and satisfaction.
