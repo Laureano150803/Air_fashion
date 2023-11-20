@@ -16,11 +16,11 @@ const TableOfCalendar = ({ onDateChange }) => {
 
   const handleDateChange = (newDate) => {
     setDate(newDate);
-    // Solo llama a la funciÃ³n proporcionada por el padre si se proporciona
+    // Solo llama a la función proporcionada por el padre si se proporciona
     onDateChange && onDateChange(newDate);
   };
 
-  console.log(date);
+  /* console.log(date); */
 
   return (
     <>
@@ -30,8 +30,6 @@ const TableOfCalendar = ({ onDateChange }) => {
           value={date}
           className="flex flex-col items-center"
           tileClassName={tileClassName}
-          next2Label=''
-          prev2Label=''
         />
       </div>
     </>
