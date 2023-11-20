@@ -30,6 +30,9 @@ const TableOfCalendar = ({ onDateChange }) => {
           value={date}
           className="flex flex-col items-center"
           tileClassName={tileClassName}
+
+          next2Label=''
+          prev2Label=''
         />
       </div>
     </>
