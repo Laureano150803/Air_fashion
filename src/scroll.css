@@ -1,3 +1,4 @@
+
 .custom-scrollbar {
     overflow-y: auto;
     max-height: 95vh;
@@ -17,3 +18,5 @@
   .custom-scrollbar::-webkit-scrollbar-track {
     background-color: #1cb6be; /* color del fondo de la barra de desplazamiento */
   }
+  
+  

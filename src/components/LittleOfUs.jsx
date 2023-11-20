@@ -5,14 +5,18 @@ import logo3 from '/src/assets/images/atencion1.png'
 import logo4 from '/src/assets/images/materiales.png' 
 
 import '../backgroundSlider.css'
-
+import useIntersection from './useIntersection'
 
 
 const LittleOfUs = () => {
+    const [element , isIntersecting]= useIntersection({
+        threshold:1,
+    });
+ 
   return (
-    <div className=' overflow-hidden bg-slate-50 flex justify-evenly items-center flex-wrap h-[48vh] gap-7 md:h-[] '>
+    <div ref={element} className=' overflow-hidden flex justify-evenly items-center flex-wrap h-[48vh] gap-7 md:h-[] '>
        
-        <div className=" w-[20rem]  flex flex-col rounded-xl justify-center bg-white  shadow-lg shadow-blue-500/60 h-[80%] ">
+        <div className={isIntersecting ?' w-[20rem]  flex flex-col  justify-center  animate-fade-right animate-duration-[2000ms] animate-fill-both h-[80%]':'w-[20rem] animate-fade-down animate-duration-1000 animate-alternate-reverse animate-fill-both flex flex-col  justify-center h-[80%]'} >
             <div className='flex justify-center items-center' >
                 <img src={logo1} className='h-20 animate-bounce animate-duration-[3000ms]' />
             </div>
@@ -24,7 +28,7 @@ const LittleOfUs = () => {
             </div>
         </div>
 
-        <div className=" w-[20rem] flex flex-col rounded-xl justify-center bg-white  shadow-lg shadow-blue-500/60 h-[80%]">
+        <div className={isIntersecting ?' w-[20rem] flex flex-col  justify-center  animate-fade-right animate-duration-[2000ms] animate-delay-500 animate-fill-both h-[80%]':'w-[20rem] animate-fade-down animate-duration-1000 animate-alternate-reverse animate-fill-both flex flex-col  justify-center h-[80%]'} >
             <div className='flex justify-center items-center' >
                 <img src={logo2} className='h-20 animate-bounce animate-duration-[3000ms] ' />
             </div>
@@ -36,7 +40,7 @@ const LittleOfUs = () => {
             </div>
         </div>
 
-        <div className=" w-[20rem] flex flex-col rounded-xl justify-center bg-white  shadow-lg shadow-blue-500/60 h-[80%]">
+        <div className={isIntersecting ?' w-[20rem] flex flex-col  justify-center  animate-fade-right animate-duration-[2000ms] animate-delay-1000 animate-fill-both h-[80%]':'w-[20rem] animate-fade-down animate-duration-1000 animate-alternate-reverse animate-fill-both flex flex-col  justify-center h-[80%]'} >
             <div className='flex justify-center items-center' >
                 <img src={logo4} className='h-20 animate-bounce animate-duration-[3000ms] ' />
             </div>
@@ -50,7 +54,7 @@ const LittleOfUs = () => {
             </div>
         </div>
 
-        <div className=" w-[20rem] flex flex-col rounded-xl justify-center bg-white  shadow-lg shadow-blue-500/60 h-[80%]">
+        <div className={isIntersecting ?' w-[20rem] flex flex-col  justify-center  animate-fade-right animate-duration-[2000ms] animate-delay-[1300ms]  animate-fill-both h-[80%]':' w-[20rem] animate-fade-down animate-duration-1000 animate-alternate-reverse animate-fill-both flex flex-col  justify-center h-[80%]'} >
             <div className='flex justify-center items-center' >
                 <img src={logo3} className='h-20 animate-bounce animate-duration-[3000ms] ' />
             </div>

@@ -48,7 +48,7 @@ import niño from '/src/assets/images/niño_img.jpg'
                 <img className="h-auto max-w-full rounded-lg" src="https://img.freepik.com/foto-gratis/peluqueria-peluqueria-mujeres-trabajos-peluqueria-campana-profesional_53876-127192.jpg?w=1380&t=st=1698864480~exp=1698865080~hmac=c908b3a619c4efaf1b41da14e7f11f81ee60d69ac41e2f099f82d0eeda965e51" alt=""/>
             </div>
             <div>
-                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt=""/>
+                <img className="h-[50rem] w-full rounded-lg" src="https://us.123rf.com/450wm/tverdohlib/tverdohlib1905/tverdohlib190501602/123641653-pelo-largo-corte-de-pelo-de-moda-peluquer%C3%ADa-sal%C3%B3n-de-belleza-chica-modelo-de-belleza-con-cabello.jpg?ver=6" alt=""/>
             </div>
             <div>
                 <img className="h-auto max-w-full rounded-lg" src="https://img.freepik.com/foto-gratis/cerrar-barbero-mascara_23-2149141762.jpg?w=1380&t=st=1698865393~exp=1698865993~hmac=d6f7579421fd5a1f6e6024030ca6168159883ff71e569c68db21541a62543f7e" alt=""/>
