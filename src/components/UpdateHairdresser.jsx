@@ -29,11 +29,13 @@ export const UpdateHairdresser = ({ close, id, reload }) => {
     if (ID.trim() !== '') {
       data.cedula = ID.trim();
     }
-    reload(true)
+   
 
     axios
       .patch(apiUrl + `peluqueros/${id}`, data, headers)
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res)
+        reload(true)})
       .catch((error) => console.error(error));
   }
 
