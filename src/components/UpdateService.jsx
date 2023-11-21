@@ -2,7 +2,7 @@ import axios from "axios";
 import apiUrl from "../../api";
 import { useState, useRef } from "react";
 
-export default function UpdateService({ id, close }) {
+export default function UpdateService({ id, close, update }) {
     const nombreServicio = useRef(null);
     const descripcion = useRef(null);
     const precio = useRef(null);
@@ -34,7 +34,7 @@ export default function UpdateService({ id, close }) {
             formData.append('foto', currentfoto);
           }
           const response = await axios.put(apiUrl + `services/${id}`, formData);
-          console.log(response);
+          update(true)
         } catch (error) {
           console.error(error);
         }
