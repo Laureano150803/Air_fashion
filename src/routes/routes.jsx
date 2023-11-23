@@ -15,6 +15,7 @@ import CrudService from "../components/CrudService.jsx";
 import PaymentApproveAndAppointment from "../components/PaymentApproveAndAppointment.jsx";
 import HairDresserPanel from "../components/HairDresserPanel.jsx";
 import Diary from "../components/Diary.jsx";
+import Statistics from "../components/Statistics.jsx";
 const router = createBrowserRouter([
     {
       
@@ -34,7 +35,8 @@ const router = createBrowserRouter([
         {path:"/appointment/new", element:<FormAppointment/>},
         {path:"/detail/:id/:genero", element:<DetailTypeService/>},
         {path:"/your-appointment", element:<PaymentApproveAndAppointment/>},
-        {path:"/hairdresser", element:<HairDresserPanel/>}
+        {path:"/hairdresser", element:<HairDresserPanel/>},
+        {path:"/statistics", element:<Statistics/>}
 
       ]
     },

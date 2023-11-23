@@ -28,7 +28,7 @@ export default function Navbar() {
 
       window.scrollTo(0, 0);
 
-      navigate('/')
+      
     }
   };
 
@@ -77,9 +77,9 @@ export default function Navbar() {
 
 
           <div className="flex  w-[100%] h-[100%] xxsm:flex-row-reverse xsm:flex-row-reverse">
-            <div className="w-[20%] flex items-center justify-center xxsm:mr-3 xsm:mr-4 ">
+            <Link to={'/'}  className="w-[20%] flex items-center justify-center xxsm:mr-3 xsm:mr-4 ">
               <img src={fix == true ? logo3 : logo} alt="logo" className={fix == true ? 'h-14 animate-rotate-x animate-duration-2000 ' : 'h-10 animate-jump-in animate-duration-1000 xsm:w-40 '} />
-            </div>
+            </Link >
             {/* Botón de menú para dispositivos móviles */}
             <div className="w-[72%] flex items-center  xxsm:mr-3 xsm:mr-3 md:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" onClick={handleMenu} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

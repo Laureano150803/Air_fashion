@@ -7,10 +7,10 @@ import useIntersection from './useIntersection';
 
 const Contact = () => {
     const [element , isIntersecting]= useIntersection({
-        threshold:1,
+        threshold:0.5,
     });
     const [element2 , isIntersecting2]= useIntersection({
-        threshold:1,
+        threshold:0.5,
     });
     return (
         <>

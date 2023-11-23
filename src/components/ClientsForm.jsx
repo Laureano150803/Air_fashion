@@ -1,11 +1,13 @@
 import React, { useRef } from 'react'
 import axios from 'axios'
 import apiUrl from '../../api'
+import { useNavigate } from 'react-router-dom'
 import showSwalAlert from '../showAlert'
 import '../backgroundSlider.css'
 import '../TiltComponent.css';
 
 const ClientsForm = ({ cerrar }) => {
+    const navigate = useNavigate()
     let nombre = useRef()
     let apellido = useRef()
     let telefono = useRef()
@@ -25,7 +27,10 @@ const ClientsForm = ({ cerrar }) => {
 
         axios.post(apiUrl + 'clients/new', data, headers)
             .then(res => {
-                showSwalAlert('success', 'Sign Up Successfully!')
+                localStorage.setItem('role', '1')
+                cerrar()
+                navigate('/Diary')
+                showSwalAlert('success', 'Welcome!, Now you can make an appointment :)')
             }).catch(err => showSwalAlert('error', err.response.data.Response))
     }
 

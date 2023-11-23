@@ -89,7 +89,7 @@ const Diary = () => {
 
 
 
-                                                        <h1>{agendas.status} WITH {agendas.peluquero_id.nombre.toUpperCase()} {agendas.peluquero_id.apellido.toUpperCase()}</h1>
+                                                        <h1>{agendas.status} WITH {agendas?.peluquero_id?.nombre?.toUpperCase()} {agendas?.peluquero_id?.apellido?.toUpperCase()}</h1>
 
 
                                                     </div>
