@@ -15,10 +15,8 @@ const ListHairdresser = () => {
     const [isOpen, setisOpen] = useState(false);
     const [openUpd, setOpenUpd] = useState(false)
     const [updateData, setUpdateData] = useState(true);
-    const openModal = () => {
-
-
-
+    
+    const openModal = () => {    
         setisOpen(true);
     }
 
@@ -56,7 +54,7 @@ const ListHairdresser = () => {
 
         const selectedFile = foto.current && foto.current.files && foto.current.files[0]
         if (!selectedFile) {
-            // Handle the case where no file is selected
+           
             console.error('No file selected');
             return;
         }

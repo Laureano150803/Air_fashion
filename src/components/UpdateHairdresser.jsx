@@ -1,43 +1,58 @@
 import axios from 'axios';
 import apiUrl from '../../api';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export const UpdateHairdresser = ({ close, id, reload }) => {
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [ID, setID] = useState('');
+  const foto = useRef()
+  const name =useRef(null)
+  const lastName=useRef(null)
+  const phone= useRef(null)
+  const ID=useRef(null)
 
-  function edictHairdresser(e) {
+  async function edictHairdresser(e) {
     e.preventDefault();
 
     const token = localStorage.getItem('token');
     const headers = { headers: { authorization: `Bearer ${token}` } };
 
+    const currentNombre = name.current.value;
+    const currentLastName = lastName.current.value;
+    const currentPhone = phone.current.value;
+    const currentID = ID.current.value;
+    const currentfoto = foto.current.files[0];
 
-    // Check if the fields are empty before adding them to the data object
     const data = {};
-    if (name.trim() !== '') {
-      data.nombre = name.trim();
+    if (currentNombre.trim() !== '') {
+      data.nombre = currentNombre.trim();
     }
-    if (lastName.trim() !== '') {
-      data.apellido = lastName.trim();
+    if (currentLastName.trim() !== '') {
+      data.apellido = currentLastName.trim();
     }
-    if (phone.trim() !== '') {
-      data.telefono = phone.trim();
+    if (currentPhone.trim() !== '') {
+      data.telefono = currentPhone.trim();
     }
-    if (ID.trim() !== '') {
-      data.cedula = ID.trim();
+    if (currentID.trim() !== '') {
+      data.cedula = currentID.trim();
     }
-   
-
-    axios
-      .patch(apiUrl + `peluqueros/${id}`, data, headers)
-      .then((res) => {
-        console.log(res)
-        reload(true)})
-      .catch((error) => console.error(error));
+    const hasProperties = Object.keys(data).length > 0;
+      if (hasProperties || currentfoto) {
+        try {
+          const formData = new FormData();
+          Object.entries(data).forEach(([key, value]) => {
+            formData.append(key, value);
+          });
+          if (currentfoto) {
+            formData.append('foto', currentfoto);
+          }
+          const response = await axios.patch(apiUrl + `peluqueros/${id}`, formData);
+          reload(true)
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      
   }
+
 
   return (
     <div className='w-[35rem] bg-black rounded-xl h-[32rem] flex justify-center items-center flex-col'>
@@ -58,38 +73,76 @@ export const UpdateHairdresser = ({ close, id, reload }) => {
           <div className="flex items-center justify-center ">
 
             <div className="relative z-10 w-[15rem] group">
-              <input type='text' value={name} onChange={(e) => setName(e.target.value)} className=" block py-2.5 px-0 w-[10rem] text-xl t bg-transparent border-0 border-b-2 border-gray-300 appearance-none text-white dark:focus:border-y-slate-50 focus:outline-none focus:ring-0 focus:border-y-slate-50 peer" placeholder=" "  />
+              <input type='text' ref={name} className=" block py-2.5 px-0 w-[10rem] text-xl t bg-transparent border-0 border-b-2 border-gray-300 appearance-none text-white dark:focus:border-y-slate-50 focus:outline-none focus:ring-0 focus:border-y-slate-50 peer" placeholder=" " />
               <label for="floating_first_name" className="peer-focus:font-medium absolute  text-xl text-slate-50 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-slate-50  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
             </div>
 
             <div className="relative z-10 w-[15rem] group">
-              <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} className="block py-2.5 px-0 w-[10rem] text-xl  bg-transparent border-0 border-b-2 border-gray-300 appearance-none text-white dark:focus:border-y-slate-50 focus:outline-none focus:ring-0 focus:border-y-slate-50 peer" placeholder=" "  />
+              <input type="text" ref={lastName}  className="block py-2.5 px-0 w-[10rem] text-xl  bg-transparent border-0 border-b-2 border-gray-300 appearance-none text-white dark:focus:border-y-slate-50 focus:outline-none focus:ring-0 focus:border-y-slate-50 peer" placeholder=" " />
               <label for="floating_last_name" className="peer-focus:font-medium absolute text-xl text-slate-50 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-slate-50  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
             </div>
           </div>
 
           <div className="flex justify-evenly items-center ">
             <div className="relative z-10 w-[15rem] mb-6 group">
-              <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} className="block py-2.5 px-0 w-[10rem] text-xl  bg-transparent border-0 border-b-2 border-gray-300 appearance-none text-white dark:focus:border-y-slate-50 focus:outline-none focus:ring-0 focus:border-y-slate-50 peer" placeholder=" "  />
+              <input type="number"  ref={phone} className="block py-2.5 px-0 w-[10rem] text-xl  bg-transparent border-0 border-b-2 border-gray-300 appearance-none text-white dark:focus:border-y-slate-50 focus:outline-none focus:ring-0 focus:border-y-slate-50 peer" placeholder=" " />
               <label for="floating_phone" className="peer-focus:font-medium absolute text-xl text-slate-50 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-slate-50  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number</label>
             </div>
 
             <div className="relative z-10 w-[15rem] mb-6 group">
-              <input type="text" value={ID} onChange={(e) => setID(e.target.value)} className="block py-2.5 px-0 w-[10rem] text-xl  bg-transparent border-0 border-b-2 border-gray-300 appearance-none text-white dark:focus:border-y-slate-50 focus:outline-none focus:ring-0 focus:border-y-slate-50 peer" placeholder=" "  />
+              <input type="number" ref={ID} className="block py-2.5 px-0 w-[10rem] text-xl  bg-transparent border-0 border-b-2 border-gray-300 appearance-none text-white dark:focus:border-y-slate-50 focus:outline-none focus:ring-0 focus:border-y-slate-50 peer" placeholder=" " />
               <label for="floating_company" className="peer-focus:font-medium absolute text-xl text-slate-50 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-slate-50  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">ID</label>
             </div>
+          </div>
+
+          <div className="flex items-center justify-center w-full h-auto z-20 ">
+
+            <label
+              htmlFor="dropzone-file"
+              className="flex flex-col items-center justify-center w-full border-2 border-dashed rounded-lg cursor-pointer"
+            >
+              <div className="flex flex-col items-center justify-center ">
+                <svg
+                  className="w-8 h-8  text-white "
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 16"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                  />
+                </svg>
+                <p className="mb-2 text-sm text-white">
+                  or drag and drop
+                </p>
+                <p className="text-xs text-white">
+                  SVG, PNG, JPG 
+                </p>
+              </div>
+              <input
+              ref={foto}
+                id="dropzone-file"
+                type="file"
+                className="hidden"
+              />
+            </label>
           </div>
         </div>
 
 
-        <button type="submit" className='container3 z-10 text-xl  text-white bg-transparent p-4'>
-                        <span></span>
-                        <div className='borderLine4 flex justify-center items-center'></div>
-                        <h1 className='z-10 text-css'>
 
-                        Update
-                        </h1>
-                    </button>
+        <button type="submit" className='container3 z-10 text-xl  text-white bg-transparent p-4'>
+          <span></span>
+          <div className='borderLine4 flex justify-center items-center'></div>
+          <h1 className='z-10 text-css'>
+            Update
+          </h1>
+        </button>
       </form>
     </div>
   );
