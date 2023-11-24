@@ -72,7 +72,7 @@ export default function HairDresserPanel() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios.patch(apiUrl + `google/cancel/${id}`, null, headers).then(res => console.log(res)).catch(res => console.log(res))
+          await axios.patch(apiUrl + `google/cancel/${id}`, null, headers)
 
           // Update the local state to re-render the component
           setCitas((prevCitas) => prevCitas.map(cita => {
@@ -83,7 +83,7 @@ export default function HairDresserPanel() {
           }));
 
           Swal.fire({
-            title: "Updated!",
+            title: "Canceled!",
             text: "The appointment has been updated.",
             icon: "success"
           });

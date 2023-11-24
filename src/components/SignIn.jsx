@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom'
 import soloSvg from '/src/assets/images/undraw_referral_re_0aji.svg'
 import fondo from '/src/assets/images/fonfo_formulario.jpg'
 import '../TiltComponent.css'
-
 import Register from '../components/Register'
 
 
@@ -25,8 +24,6 @@ export default function SignIn() {
   }
 
 
-    gapi.load('client:auth2', start);
-  }, [clientID]);
 
   
   let passwordConfirmation = useRef();
@@ -111,11 +108,11 @@ export default function SignIn() {
        backgroundSize: 'cover ',
        filter: 'blur(15px)'
 
+
      }}
      ></div>
       </div>
         <div className="froms-container absolute w-[100%] h-[100%] top-0 left-0 ">
-
           {!isOpen &&(
 
 
@@ -139,8 +136,6 @@ export default function SignIn() {
               </div>
               <div className="  flex flex-col gap-7  ">
 
-
-
                 <div className="input-sing-in relative text-white ">
                   <div className="absolute inset-y-0 left-0 pl-2  flex items-center   pointer-events-none">
 
@@ -163,7 +158,6 @@ export default function SignIn() {
 
                   <input ref={password} className=" p-2 pl-10 text-lg text-white border border-gray-100 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif z-10  placeholder-white outline-none" type="password" placeholder="Password" required />
                 </div>
-
               </div>
               <button type="submit" className='container3 z-10 text-xl text-white mt-6 bg-transparent p-4 ' style={{width: '384px'}}>
                         <span></span>
@@ -204,7 +198,6 @@ export default function SignIn() {
           </div>
 
 
-
           {/* <div className="panel right-panel ">
             <div className="content">
 
@@ -217,7 +210,6 @@ export default function SignIn() {
             </div>
             <img src={soloSvg} className='image'/>
           </div> */}
-
 
         </div>
 
