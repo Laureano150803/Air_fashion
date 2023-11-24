@@ -27,6 +27,10 @@
     grid-template-columns: 1fr;
     z-index: 5;
   }
+
+
+
+
   
   #form{
     display: flex;

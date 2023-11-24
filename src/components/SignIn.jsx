@@ -11,9 +11,22 @@ import soloSvg from '/src/assets/images/undraw_referral_re_0aji.svg'
 import fondo from '/src/assets/images/fonfo_formulario.jpg'
 import '../TiltComponent.css'
 
+import Register from '../components/Register'
+
 
 export default function SignIn() {
-  const [classlist, setclasslist] = useState('')
+  const [isOpen, setisOpen] = useState(false)
+
+  function openPanel(){
+    setisOpen(true)
+  }
+  function closePanel(){
+    setisOpen(false)
+  }
+
+
+    gapi.load('client:auth2', start);
+  }, [clientID]);
 
   
   let passwordConfirmation = useRef();
@@ -98,11 +111,14 @@ export default function SignIn() {
        backgroundSize: 'cover ',
        filter: 'blur(15px)'
 
-
      }}
      ></div>
       </div>
         <div className="froms-container absolute w-[100%] h-[100%] top-0 left-0 ">
+
+          {!isOpen &&(
+
+
           <div className="signin-signup container42 animate-fade-left animate-duration-[3000ms] animate-delay-[2000ms]">
             <div className='borderLine42 flex justify-center items-center'></div>
           
@@ -123,6 +139,8 @@ export default function SignIn() {
               </div>
               <div className="  flex flex-col gap-7  ">
 
+
+
                 <div className="input-sing-in relative text-white ">
                   <div className="absolute inset-y-0 left-0 pl-2  flex items-center   pointer-events-none">
 
@@ -132,7 +150,7 @@ export default function SignIn() {
 
                   </div>
 
-                  <input ref={email} className=" p-2 pl-10 text-lg text-white border border-gray-100 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif   placeholder-white outline-none" type="text" placeholder="E-mail" autoComplete="none" required />
+                  <input ref={email} className=" p-2 pl-10 text-lg text-white border border-gray-100 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif z-10  placeholder-white outline-none" type="text" placeholder="E-mail" autoComplete="none" required />
                 </div>
                 <div className="input-sing-in relative text-white">
                   <div className="absolute inset-y-0 left-0 pl-2  flex items-center   pointer-events-none">
@@ -143,14 +161,11 @@ export default function SignIn() {
 
                   </div>
 
-                  <input ref={password} className=" p-2 pl-10 text-lg text-white border border-gray-100 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif   placeholder-white outline-none" type="password" placeholder="Password" required />
+                  <input ref={password} className=" p-2 pl-10 text-lg text-white border border-gray-100 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif z-10  placeholder-white outline-none" type="password" placeholder="Password" required />
                 </div>
+
               </div>
-              <button type="submit" className='container3 z-10 text-xl text-white mt-6 bg-transparent p-4 '
-              style={{
-                width: '384px'
-              }}
-              >
+              <button type="submit" className='container3 z-10 text-xl text-white mt-6 bg-transparent p-4 ' style={{width: '384px'}}>
                         <span></span>
                         <div className='borderLine4 flex justify-center items-center'></div>
                         <h1 className='z-10 text-css'>
@@ -160,62 +175,19 @@ export default function SignIn() {
                     </button>
             </form>
 
-
-            <form id='form' className="singn-up-form  opacity-0 z-10  flex items-center justify-centern flex-col" onSubmit={handleform}>
-              <h2 className="title text-4xl text-css-h1 text-black mb-3 ">Sign up</h2>
-
-              <GoogleLogin
-                className="flex space-x-2 justify-center rounded-xl items-end hover:scale-105 border border-gray-300 text-gray-600 py-2 transition duration-100 w-[20rem]"
-                clientId={clientID}
-                buttonText="Sign In with Google"
-                onSuccess={onSuccess}
-                onFailure={onFailure}
-                cookiePolicy={"single_host_policy"}
-              />
-              <div className="flex justify-center items-center ">
-                <p>OR</p>
-              </div>
-              <div className=" p-3 flex flex-col gap-7  ">
-
-                <div className="input-sing-in relative text-gray-400 ">
-                  <div className="absolute inset-y-0 left-0 pl-2  flex items-center   pointer-events-none">
-
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                    </svg>
-
-                  </div>
-
-                  <input ref={email} className="block p-2 pl-10 text-lg text-gray-900 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif    outline-none" type="text" placeholder="E-mail" autoComplete="none" required />
-                </div>
-                <div className="input-sing-in relative text-gray-400">
-                  <div className="absolute inset-y-0 left-0 pl-2  flex items-center   pointer-events-none">
-
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                    </svg>
-
-                  </div>
-
-                  <input ref={password} className="block p-2 pl-10 text-lg text-gray-900 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif    outline-none" type="password" placeholder="Password" required />
-                </div>
-                <div className="input-sing-in relative text-gray-400">
-                  <div className="absolute inset-y-0 left-0 pl-2  flex items-center   pointer-events-none">
-
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                    </svg>
-
-                  </div>
-
-                  <input ref={passwordConfirmation} className="block p-2 pl-10 text-lg text-gray-900 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif    outline-none" type="password" placeholder="Confirm Password" required />
-                </div>
-              </div>
-              <input type="submit" value='Sign Up' className="bg-gray-800 cursor-pointer text-gray-50 font-bold mt-4 py-2 px-20 rounded-sm transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300" />
-            </form>
-
-
           </div>
+          )}
+          {isOpen &&(
+
+          <div 
+          style={{
+            top:'36%'
+          }}
+          className="container42 h-auto signin-signup animate-fade-up animate-duration-[2000ms] animate-ease-in animate-fill-forwards">
+            <div className='borderLine42 flex justify-center items-center'></div>
+            <Register/>
+          </div>
+          )}
         </div>
         <div className="panels-container  ">
           <div className="panel left-panel">
@@ -226,10 +198,11 @@ export default function SignIn() {
 
                 If you don't have an account please create one here</p>
 
-            <button id='sign-up-btn' onClick={''} className=' bg-transparent rounded-3xl text-white h-10 font-bold border-4  w-32 '> Sign Up</button>
+            <button  onClick={openPanel} className=' bg-transparent rounded-3xl text-white h-10 font-bold border-4  w-32 '> Sign Up</button>
             </div>
             <img src={soloSvg} className='image animate-flip-up animate-duration-[2000ms]'/>
           </div>
+
 
 
           {/* <div className="panel right-panel ">
@@ -240,10 +213,12 @@ export default function SignIn() {
 
                 If you don't have an account please create one here</p>
 
-            <button id='sign-in-btn' onClick={''} className='bg-transparent rounded-3xl text-white h-10 font-bold border-4 w-32'> Sign In</button>
+            <button  onClick={''} className='bg-transparent rounded-3xl text-white h-10 font-bold border-4 w-32'> Sign In</button>
             </div>
             <img src={soloSvg} className='image'/>
           </div> */}
+
+
         </div>
 
       </div>
