@@ -86,7 +86,9 @@ export default function Register({goBack}) {
               </div>
               <div className=" p-3 flex flex-col gap-7  ">
 
+
                 <div className="input-sing-in relative text-white ">
+
                   <div className="absolute inset-y-0 left-0 pl-2  flex items-center   pointer-events-none">
 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -98,6 +100,7 @@ export default function Register({goBack}) {
                   <input ref={email} className="block p-2 pl-10 text-lg text-white z-20 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif     placeholder-white outline-none" type="text" placeholder="E-mail" autoComplete="none" required />
                 </div>
                 <div className="input-sing-in relative text-white">
+
                   <div className="absolute inset-y-0 left-0 pl-2  flex items-center   pointer-events-none">
 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -109,6 +112,7 @@ export default function Register({goBack}) {
                   <input ref={password} className="block p-2 pl-10 text-lg text-white z-20 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif  placeholder-white    outline-none" type="password" placeholder="Password" required />
                 </div>
                 <div className="input-sing-in relative text-white">
+
                   <div className="absolute inset-y-0 left-0 pl-2  flex items-center   pointer-events-none">
 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
