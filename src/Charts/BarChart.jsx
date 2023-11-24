@@ -45,8 +45,8 @@ let data = {
   datasets: [{
     label: `Total Price per Month`,
     data: sumasPorMes,
-    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-    borderColor: 'rgba(255, 99, 132, 1)',
+    backgroundColor: 'rgba(0,0,255,0.4)',
+    borderColor: 'rgba(0,0,255,1)',
     borderWidth: 1,
   }],
 };
