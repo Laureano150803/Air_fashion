@@ -8,7 +8,9 @@ import { GoogleLogin } from 'react-google-login'
 import { Link } from "react-router-dom"
 import ClientsForm from '../components/ClientsForm'
 import Swal from "sweetalert2"
-export default function Register() {
+
+export default function Register({goBack}) {
+
   let email = useRef()
   let password = useRef()
   let passwordConfirmation = useRef()
@@ -27,7 +29,7 @@ export default function Register() {
 
 
   const onSuccess = (response) => {
-    // console.log(response)
+ 
     const {email,googleId } = response.profileObj;
     let data = {
       email: email,
@@ -55,24 +57,25 @@ export default function Register() {
         email: email.current.value.toLowerCase(),
         password: enteredPassword
       }
+      await axios.post(apiUrl + 'users/signup', data)
+      .then(res =>{
+        showSwalAlert('success','Sign Up Successfully!') 
+        goBack()
+
+      })
+      .catch(err => showSwalAlert('error', err.response.data.Response))
     }
-    await axios.post(apiUrl + 'users/signup', data)
-    .then(res =>{
-      showSwalAlert('success','Sign Up Successfully!') 
-      navegate('/signin')
-    })
-    .catch(err => showSwalAlert('error', err.response.data.Response))
   }
   return (
     <>
 
 
-      <div className="w-full flex justify-center items-center ">
+      <div className="w-full flex justify-center items-center h-full ">
       <form className="singn-up-form  flex items-center justify-centern flex-col" onSubmit={handleform}>
-              <h2 className="title text-4xl text-css-h1 text-white mb-3 z-10 ">Sign up</h2>
+              <h2 className="title text-4xl text-css-h1 text-white mb-3 z-10 p-2">Sign up</h2>
 
               <GoogleLogin
-                className="flex z-20 space-x-2 justify-center rounded-xl items-end hover:scale-105 border border-gray-300 text-gray-600 py-2 transition duration-100 w-[20rem]"
+                className="flex z-20 space-x-2 justify-center rounded-xl items-end hover:scale-105 border border-gray-300 text-gray-600 py-2 transition duration-100 w-[384px]"
 
                 clientId={clientID}
                 buttonText="Sign In with Google"
@@ -81,7 +84,7 @@ export default function Register() {
                 cookiePolicy={"single_host_policy"}
               />
 
-              <div className="flex justify-center items-center z-10 text-white p-4">
+              <div className="flex justify-center items-center z-10 text-white p-3">
 
                 <p>OR</p>
               </div>
@@ -98,7 +101,9 @@ export default function Register() {
 
                   </div>
 
-                  <input ref={email} className="block p-2 pl-10 text-lg text-gray-900 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif     placeholder-white outline-none" type="text" placeholder="E-mail" autoComplete="none" required />
+
+                  <input ref={email} className="block p-2 pl-10 text-lg text-white z-20 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif     placeholder-white outline-none" type="text" placeholder="E-mail" autoComplete="none" required />
+
                 </div>
                 <div className="input-sing-in relative text-white">
 
@@ -110,7 +115,8 @@ export default function Register() {
 
                   </div>
 
-                  <input ref={password} className="block p-2 pl-10 text-lg text-gray-900 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif  placeholder-white    outline-none" type="password" placeholder="Password" required />
+                  <input ref={password} className="block p-2 pl-10 text-lg text-white z-20 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif  placeholder-white    outline-none" type="password" placeholder="Password" required />
+
                 </div>
                 <div className="input-sing-in relative text-white">
 
@@ -122,12 +128,19 @@ export default function Register() {
 
                   </div>
 
-                  <input ref={passwordConfirmation} className="block p-2 pl-10 text-lg text-gray-900 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 placeholder-white  font-serif    outline-none" type="password" placeholder="Confirm Password" required />
+
+                  <input ref={passwordConfirmation} className="block p-2 pl-10 text-lg text-white z-20 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 placeholder-white  font-serif    outline-none" type="password" placeholder="Confirm Password" required />
 
                 </div>
               </div>
-              <input type="submit" value='Sign Up' className="bg-gray-800 cursor-pointer text-gray-50 font-bold mt-4 py-2 px-20 rounded-sm transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300" />
+              <button type="submit" className='container3 z-10 text-xl text-white mt-6 bg-transparent p-4 ' style={{ width: '384px' }}>
+                  <span></span>
+                  <div className='borderLine4 flex justify-center items-center'></div>
+                  <h1 className='z-10 text-css'>
 
+                    Sign Up
+                  </h1>
+                </button>
             </form>
       </div>
     </>
