@@ -61,6 +61,34 @@ async function dropService(id) {
 
 }
 
+  async function dropService(id){
+    
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
+      if (result.isConfirmed) {
+          axios.delete(apiUrl + `services/${id}`)
+              .then(res => {
+                setUpdData(true)
+                  Swal.fire({
+                      title: "Deleted!",
+                      text: "Your file has been deleted.",
+                      icon: "success"
+                  });
+              })
+              .catch(error => {
+                  console.log(error);
+              });
+      }
+  });
+    
+  }
 
 
 

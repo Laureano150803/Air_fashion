@@ -60,10 +60,43 @@ export default function HairDresserPanel() {
     });
   }
 
+  async function markAsCanceled(id) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, cancel appointment!"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await axios.patch(apiUrl + `google/cancel/${id}`, null, headers)
+
+          // Update the local state to re-render the component
+          setCitas((prevCitas) => prevCitas.map(cita => {
+            if (cita._id === id) {
+              return { ...cita, status: 'CANCELED' };
+            }
+            return cita;
+          }));
+
+          Swal.fire({
+            title: "Canceled!",
+            text: "The appointment has been updated.",
+            icon: "success"
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    });
+  }
+
 
   const doneAppointments = citas.filter(cita => cita.status === 'DONE');
   const pendingAppointments = citas.filter(cita => cita.status === 'PENDING');
-
 
   return (
     <>
@@ -124,7 +157,21 @@ export default function HairDresserPanel() {
                       }}
                       className='makeAppoiment m-0 p-0'
                       style={{ margin: '0px', padding: '0px', paddingLeft: '2px' }}
-                    >mark as done</button>
+                    >mark as done
+                    </button>
+                    {dayjs().diff(dayjs(cita.inicio), 'minute') > 20 &&
+                      <button
+                        value={cita._id}
+                        onClick={(e) => {
+                          const id = e.currentTarget.getAttribute("value");
+                          markAsCanceled(id);
+                        }}
+                        className='makeAppoiment'
+                        style={{ margin: '0px', padding: '0px', paddingLeft: '2px', color: 'red' }}>
+                        absentee!
+                      </button>
+                    }
+
 
                   </div>
                 </div>

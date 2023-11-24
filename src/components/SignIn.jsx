@@ -10,13 +10,8 @@ import { useNavigate } from 'react-router-dom'
 import soloSvg from '/src/assets/images/undraw_referral_re_0aji.svg'
 import signup from '/src/assets/images/undraw_icons_wdp4.svg'
 import fondo from '/src/assets/images/fonfo_formulario.jpg'
-
 import '../TiltComponent.css'
 import Register from '../components/Register'
-
-import Register from '../components/Register'
-
-
 export default function SignIn() {
   const [isOpen, setisOpen] = useState(false)
 
@@ -236,7 +231,6 @@ export default function SignIn() {
             <img src={signup} className='image animate-rotate-y animate-duration-1000 animate-fill-forwards'/>
           </div>
           )}
-
 
         </div>
 
