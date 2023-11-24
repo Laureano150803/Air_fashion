@@ -14,6 +14,7 @@ ChartJS.register(
 )
 
 const BarChart = () => {
+  
   const [chart, setchart] = useState([])
 
   useEffect(() => {
@@ -23,52 +24,42 @@ const BarChart = () => {
     .catch(res=>console.log(res))
   }, [])
   
-  const mesesUnicosSet = new Set();
+  const preciosPorMes = {};
 
-  const array = chart.map(mes => {
-    const nombreMes = dayjs(mes.inicio).format('MMMM');
-    mesesUnicosSet.add(nombreMes);
-    return nombreMes;
-  });
-  
-  const mesesUnicosArray = Array.from(mesesUnicosSet);
+chart.forEach((mes) => {
+  const nombreMes = dayjs(mes.inicio).format('MMMM');
+  const precio = mes.servicio_id.precio;
 
-    const precios = chart.map(precio => precio.servicio_id.precio);
+  if (!preciosPorMes[nombreMes]) {
+    preciosPorMes[nombreMes] = precio;
+  } else {
+    preciosPorMes[nombreMes] += precio;
+  }
+});
 
-    const sumaPrecios = precios.reduce((total, precio) => total + precio, 0);
-    
+const mesesUnicosArray = Object.keys(preciosPorMes);
+const sumasPorMes = Object.values(preciosPorMes);
 
-    let data = {
-      
-        labels: mesesUnicosArray,
-        datasets: [{
-          label: `# of Votes`,
-          data: [sumaPrecios],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 99, 132, 0.2)'
+let data = {
+  labels: mesesUnicosArray,
+  datasets: [{
+    label: `Total Price per Month`,
+    data: sumasPorMes,
+    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+    borderColor: 'rgba(255, 99, 132, 1)',
+    borderWidth: 1,
+  }],
+};
 
-         
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(255, 99, 132, 0.2)'
-
-          ],
-          borderWidth: 1
-        }]
-      };
-    
-      let options = {
-        maintainAspectRatio: false,
-        scales: {
-        },
-        legend: {
-          labels: {
-            fontSize: 25,
-          },
-        },
-      }
+let options = {
+  maintainAspectRatio: false,
+  scales: {},
+  legend: {
+    labels: {
+      fontSize: 25,
+    },
+  },
+};
 
   return (
     <>
