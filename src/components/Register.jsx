@@ -66,24 +66,30 @@ export default function Register() {
   return (
     <>
 
+
       <div className="w-full flex justify-center items-center ">
       <form className="singn-up-form  flex items-center justify-centern flex-col" onSubmit={handleform}>
               <h2 className="title text-4xl text-css-h1 text-white mb-3 z-10 ">Sign up</h2>
 
               <GoogleLogin
                 className="flex z-20 space-x-2 justify-center rounded-xl items-end hover:scale-105 border border-gray-300 text-gray-600 py-2 transition duration-100 w-[20rem]"
+
                 clientId={clientID}
                 buttonText="Sign In with Google"
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 cookiePolicy={"single_host_policy"}
               />
+
               <div className="flex justify-center items-center z-10 text-white p-4">
+
                 <p>OR</p>
               </div>
               <div className=" p-3 flex flex-col gap-7  ">
 
+
                 <div className="input-sing-in relative text-white ">
+
                   <div className="absolute inset-y-0 left-0 pl-2  flex items-center   pointer-events-none">
 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -95,6 +101,7 @@ export default function Register() {
                   <input ref={email} className="block p-2 pl-10 text-lg text-gray-900 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif     placeholder-white outline-none" type="text" placeholder="E-mail" autoComplete="none" required />
                 </div>
                 <div className="input-sing-in relative text-white">
+
                   <div className="absolute inset-y-0 left-0 pl-2  flex items-center   pointer-events-none">
 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -106,6 +113,7 @@ export default function Register() {
                   <input ref={password} className="block p-2 pl-10 text-lg text-gray-900 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif  placeholder-white    outline-none" type="password" placeholder="Password" required />
                 </div>
                 <div className="input-sing-in relative text-white">
+
                   <div className="absolute inset-y-0 left-0 pl-2  flex items-center   pointer-events-none">
 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -115,6 +123,7 @@ export default function Register() {
                   </div>
 
                   <input ref={passwordConfirmation} className="block p-2 pl-10 text-lg text-gray-900 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 placeholder-white  font-serif    outline-none" type="password" placeholder="Confirm Password" required />
+
                 </div>
               </div>
               <input type="submit" value='Sign Up' className="bg-gray-800 cursor-pointer text-gray-50 font-bold mt-4 py-2 px-20 rounded-sm transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300" />

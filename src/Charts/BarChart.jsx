@@ -14,7 +14,7 @@ ChartJS.register(
 )
 
 const BarChart = () => {
-  
+
   const [chart, setchart] = useState([])
 
   useEffect(() => {
@@ -24,6 +24,7 @@ const BarChart = () => {
     .catch(res=>console.log(res))
   }, [])
   
+
   const preciosPorMes = {};
 
 chart.forEach((mes) => {
@@ -60,7 +61,6 @@ let options = {
     },
   },
 };
-
   return (
     <>
     <div className="">
