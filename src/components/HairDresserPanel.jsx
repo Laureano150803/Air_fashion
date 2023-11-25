@@ -8,8 +8,10 @@ import dayjs from 'dayjs';
 import Swal from 'sweetalert2';
 import '../scroll.css'
 import TableOfCalendar from './TableOfCalendar';
+import { useParams } from 'react-router-dom';
 
 export default function HairDresserPanel() {
+  const{id}=useParams()
   const token = localStorage.getItem('token');
   const headers = { headers: { 'authorization': `Bearer ${token}` } };
 
@@ -21,9 +23,25 @@ export default function HairDresserPanel() {
     setSelectedDate(newDate);
   };
   useEffect(() => {
-    axios.get(apiUrl + 'google/allMyAppointments', headers)
+
+    
+    const role = localStorage.getItem('role')
+
+    if(role === '3'){
+      axios.get(apiUrl + `google/hairdresser/appointments/${id}`, headers)
       .then(res => setCitas(res.data.response))
       .catch(res => console.log(res));
+    }
+
+    if(role==='2'){
+      axios.get(apiUrl + 'google/allMyAppointments', headers )
+      .then(res => setCitas(res.data.response))
+      .catch(res => console.log(res));
+    }
+
+      
+    
+   
   }, []);
 
   async function markAsDone(id) {

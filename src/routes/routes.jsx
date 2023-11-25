@@ -36,8 +36,8 @@ const router = createBrowserRouter([
         {path:"/detail/:id/:genero", element:<DetailTypeService/>},
         {path:"/your-appointment", element:<PaymentApproveAndAppointment/>},
         {path:"/hairdresser", element:<HairDresserPanel/>},
-        {path:"/statistics", element:<Statistics/>}
-
+        {path:"/statistics", element:<Statistics/>},
+        {path:"/hairdresser/:id", element:<HairDresserPanel/>},
       ]
     },
   ])
