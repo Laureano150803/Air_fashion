@@ -5,18 +5,18 @@ import { UpdateHairdresser } from './UpdateHairdresser';
 import Swal from 'sweetalert2';
 import '../backgroundSlider.css';
 import showSwalAlert from '../showAlert';
-
-
+import { Link, useNavigate } from 'react-router-dom';
+import GoBackAdmin from './GoBackAdmin';
 const ListHairdresser = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     const headers = { headers: { 'authorization': `Bearer ${token}` } };
 
     const [idvalue, setidvalue] = useState('');
     const [isOpen, setisOpen] = useState(false);
     const [openUpd, setOpenUpd] = useState(false)
     const [updateData, setUpdateData] = useState(true);
-    
-    const openModal = () => {    
+
+    const openModal = () => {
         setisOpen(true);
     }
 
@@ -54,7 +54,7 @@ const ListHairdresser = () => {
 
         const selectedFile = foto.current && foto.current.files && foto.current.files[0]
         if (!selectedFile) {
-           
+
             console.error('No file selected');
             return;
         }
@@ -74,10 +74,10 @@ const ListHairdresser = () => {
         })
             .catch(res => showSwalAlert('error', 'Error creating Hairdresser'))
 
-           
+
     }
-    async function deleteHairdresser(id){
-        const Id= id
+    async function deleteHairdresser(id) {
+        const Id = id
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -105,11 +105,14 @@ const ListHairdresser = () => {
             }
         });
     };
-
+    const navigate = useNavigate()
 
     const [peluqueros, setpeluqueros] = useState([])
+    const role = localStorage.getItem('role')
     useEffect(() => {
-        // Obtener la lista de peluqueros solo cuando updateData sea true
+        if (role !== '3') {
+            navigate('/')
+          }
         const fetchData = async () => {
             try {
                 const response = await axios.get(apiUrl + 'peluqueros');
@@ -172,7 +175,10 @@ const ListHairdresser = () => {
     return (
         <>
             <div className="w-full h-[100vh]  ">
-                <div className="flex justify-evenly items-center min-h-screen ">
+                <div className="flex justify-center flex-col items-center min-h-screen ">
+                    <div className='w-[55%] mb-4'>
+                        <GoBackAdmin/>
+                    </div>
 
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-[55%] rounded-xl">
                         <div className="flex items-center justify-around py-4 bg-gradient-to-r from-cyan-500 to-blue-500  ">
@@ -266,14 +272,21 @@ const ListHairdresser = () => {
 
                                                         <svg
                                                             value={peluquero._id}
-                                                            onClick={async(e) => {
+                                                            onClick={async (e) => {
                                                                 const id = e.currentTarget.getAttribute("value");
                                                                 deleteHairdresser(id)
                                                             }}
-                                                            
+
                                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 stroke-red-600 cursor-pointer ">
                                                             <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                                                         </svg>
+                                                        <Link to={`/hairdresser/${peluquero._id}`}>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6  cursor-pointer text-black hover:scale-125 duration-150">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                                <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                            </svg>
+                                                        </Link>
+
                                                     </div>
                                                 </td>
                                             </tr>
@@ -327,14 +340,16 @@ const ListHairdresser = () => {
 
                                                         <svg
                                                             value={peluquero._id}
-                                                            onClick={(e) => {
+                                                            onClick={async (e) => {
                                                                 const id = e.currentTarget.getAttribute("value");
-                                                                setidvalue(id)
+                                                                deleteHairdresser(id)
                                                             }}
-                                                            onDoubleClick={deleteHairdresser}
+
                                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 stroke-red-600 cursor-pointer ">
                                                             <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                                                         </svg>
+
+
                                                     </div>
                                                 </td>
                                             </tr>
@@ -396,7 +411,7 @@ const ListHairdresser = () => {
 
 
                                 <div className="flex items-center justify-center w-full mb-8">
-                                    <label  for="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100">
+                                    <label for="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100">
                                         <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                             <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />

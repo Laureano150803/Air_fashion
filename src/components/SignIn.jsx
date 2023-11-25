@@ -29,13 +29,19 @@ export default function SignIn() {
 
 
 
-  let passwordConfirmation = useRef();
+  
   const email = useRef();
   const password = useRef();
   const clientID = import.meta.env.VITE_CLIENT_ID;
   const navigate = useNavigate();
 
+  const role = localStorage.getItem('role')
+
   useEffect(() => {
+
+    if(role){
+      navigate('/')
+    }
     const start = async () => {
       try {
         await gapi.auth2.init({
@@ -45,8 +51,9 @@ export default function SignIn() {
         console.error('Error initializing Google Auth:', error);
       }
     };
-
     gapi.load('client:auth2', start);
+
+   
   }, [clientID]);
 
   const onSuccess = (response) => {
