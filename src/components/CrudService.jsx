@@ -146,6 +146,11 @@ const CrudService = () => {
             <h1 className='font-extrabold text-transparent text-6xl bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-500'>Services of Hair Fashion </h1>
             <img src={servicesPhoto} className='w-72 h-40' alt="" />
           </div>
+          
+        
+        </div>
+        
+        <div className="flex justify-evenly items-center overflow-auto  ">
 
 
         </div>
