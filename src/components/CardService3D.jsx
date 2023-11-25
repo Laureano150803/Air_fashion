@@ -28,7 +28,7 @@ const CardService3D = () => {
 
   return (
     <>
-      <div className=" flex " >
+      <div className=" flex mb-16 " >
 
         <div className=" w-[100vw]">
 
