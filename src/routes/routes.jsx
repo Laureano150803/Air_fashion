@@ -1,6 +1,5 @@
 import {createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Register from "../components/Register";
 import Layout from '../layouts/Main'
 import SignIn from "../components/SignIn";
 import AppiomentClient from "../components/AppointMentClient";
@@ -17,15 +16,13 @@ import HairDresserPanel from "../components/HairDresserPanel.jsx";
 import Diary from "../components/Diary.jsx";
 import Statistics from "../components/Statistics.jsx";
 import ShowAllServices from "../components/ShowAllServices.jsx";
+import Sidebar from "../components/Sidebar.jsx";
 const router = createBrowserRouter([
     {
-      
       path: "/",  element: <Layout/>,
       children:[
         {path:"/" , element:<App/>},
-        {path: "/register", element:<Register/>},
         {path: "/signin", element:<SignIn/>},
-        {path: "/ClientsForm", element:<ClientsForm/>},
         {path: "/AboutUs" , element:<AboutUs/>},
         {path: "/Contact" , element:<Contact/>},
         {path: "/CrudService" , element:<CrudService/>},
@@ -40,6 +37,7 @@ const router = createBrowserRouter([
         {path:"/hairdresser", element:<HairDresserPanel/>},
         {path:"/statistics", element:<Statistics/>},
         {path:"/hairdresser/:id", element:<HairDresserPanel/>},
+        {path:"/adminPanel", element:<Sidebar/>}
       ]
     },
   ])

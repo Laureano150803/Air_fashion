@@ -111,14 +111,18 @@ export default function Navbar() {
                 <Link to="/hairdresser" className="hover:text-violet-800 hover:border-b-2 transition text-black font-bold duration-700">
                   HairDresser Panel
                 </Link>}
+              {role === '3' &&
+                <Link to="/adminPanel" className="hover:text-violet-800 hover:border-b-2 transition text-black font-bold duration-700">
+                  Admin Panel
+                </Link>}
               <Link to="/AboutUs" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 About us
               </Link>
-              {role != '2' ? (
+              {role !== '2' && role !== '3' ? (
                 <Link to="/Contact" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                   Contact
-                </Link>) : ('')
-              }
+                </Link>
+              ) : ''}
               {!role ? (
                 <Link to="/signin" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                   Log In
@@ -145,7 +149,7 @@ export default function Navbar() {
 
               {onMyAppointments && <MyPendingAppointments close={cancelMyAppointments} />}
             </div>
-           
+
             {option && (<NavbarMobile backHome={backHome} estado={handleMenu} />)}
           </div>
         </div>

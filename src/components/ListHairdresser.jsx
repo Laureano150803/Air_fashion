@@ -5,8 +5,8 @@ import { UpdateHairdresser } from './UpdateHairdresser';
 import Swal from 'sweetalert2';
 import '../backgroundSlider.css';
 import showSwalAlert from '../showAlert';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import GoBackAdmin from './GoBackAdmin';
 const ListHairdresser = () => {
     const token = localStorage.getItem('token');
     const headers = { headers: { 'authorization': `Bearer ${token}` } };
@@ -105,11 +105,14 @@ const ListHairdresser = () => {
             }
         });
     };
-
+    const navigate = useNavigate()
 
     const [peluqueros, setpeluqueros] = useState([])
+    const role = localStorage.getItem('role')
     useEffect(() => {
-        // Obtener la lista de peluqueros solo cuando updateData sea true
+        if (role !== '3') {
+            navigate('/')
+          }
         const fetchData = async () => {
             try {
                 const response = await axios.get(apiUrl + 'peluqueros');
@@ -172,7 +175,10 @@ const ListHairdresser = () => {
     return (
         <>
             <div className="w-full h-[100vh]  ">
-                <div className="flex justify-evenly items-center min-h-screen ">
+                <div className="flex justify-center flex-col items-center min-h-screen ">
+                    <div className='w-[55%] mb-4'>
+                        <GoBackAdmin/>
+                    </div>
 
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-[55%] rounded-xl">
                         <div className="flex items-center justify-around py-4 bg-gradient-to-r from-cyan-500 to-blue-500  ">

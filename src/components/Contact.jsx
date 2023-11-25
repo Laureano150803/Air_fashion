@@ -1,9 +1,13 @@
 import React from 'react'
 import '../backgroundSlider.css';
 import contact from '/src/assets/images/local7.png'
-import email from '/src/assets/images/email.png'
+import emailphoto from '/src/assets/images/email.png'
 import telefono from '/src/assets/images/telefono.png'
 import useIntersection from './useIntersection';
+import { useRef } from 'react';
+import axios from 'axios';
+import apiUrl from '../../api';
+import showSwalAlert from '../showAlert';
 
 const Contact = () => {
     const [element , isIntersecting]= useIntersection({
@@ -12,6 +16,20 @@ const Contact = () => {
     const [element2 , isIntersecting2]= useIntersection({
         threshold:0.5,
     });
+    const email = useRef()
+    const mensaje = useRef()
+    const nombre = useRef()
+    const apellido = useRef()
+
+    function contactUs(){
+        const data ={
+            email:email.current.value,
+            mensaje:mensaje.current.value,
+            nombre:nombre.current.value,
+            apellido:apellido.current.value
+        }
+        axios.post(apiUrl + 'mailer/contact', data).then(()=>showSwalAlert('success', 'Thanks for contact us')).catch(res=>console.log(res))
+    }
     return (
         <>
             <div className="bg-transparent bg-opacity-0 h-auto w-auto flex items-center">
@@ -60,7 +78,7 @@ const Contact = () => {
                                 </div>
                                 <div className={isIntersecting?'flex gap-3 items-center  animate-fade-right animate-duration-[3000ms] animate-delay-700':'flex gap-3 items-center opacity-0 '}>
 
-                                    <img src={email} className='h-10 w-12 ' />
+                                    <img src={emailphoto} className='h-10 w-12 ' />
                                     <h1 className='text-cyan-400 text-lg'>Hairfashion1526@gmail.com</h1>
                                 </div>
                             </div>
@@ -73,14 +91,14 @@ const Contact = () => {
                                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                                         First Name
                                     </label>
-                                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" />
+                                    <input ref={nombre} className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" />
                                     <p className=" text-xs italic">Please fill out this field.</p>
                                 </div>
                                 <div className="w-full md:w-1/2 px-3">
                                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                         Last Name
                                     </label>
-                                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe" />
+                                    <input ref={apellido} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe" />
                                 </div>
                             </div>
                             <div className="flex flex-wrap -mx-3 mb-6">
@@ -88,7 +106,7 @@ const Contact = () => {
                                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                         E-mail
                                     </label>
-                                    <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="email" type="email" />
+                                    <input ref={email} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="email" type="email" />
                                     <p className="text-gray-600 text-xs italic">Some tips - as long as needed</p>
                                 </div>
                             </div>
@@ -97,12 +115,12 @@ const Contact = () => {
                                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                                         Message
                                     </label>
-                                    <textarea className=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none" id="message"></textarea>
+                                    <textarea ref={mensaje} className=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none" id="message"></textarea>
                                 </div>
                             </div>
                             <div className="md:flex md:items-center">
                                 <div className="md:w-1/3">
-                                    <button className="shadow bg-cyan-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                                    <button onClick={contactUs} className="shadow bg-cyan-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
                                         Send
                                     </button>
                                 </div>

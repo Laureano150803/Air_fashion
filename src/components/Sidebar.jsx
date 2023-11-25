@@ -1,12 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import logo from '/src/assets/images/logo2.png'
 import '../backgroundSlider.css'
 import { Link } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom';
+import adminPhoto from '/src/assets/images/admin.svg'
 
 const Sidebar = () => {
   const [open, setopen] = useState(false)
 
+  const role = localStorage.getItem('role')
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if (role !== '3') {
+      navigate('/')
+    }
+  },[])
 
   return (
     <>
@@ -73,8 +81,8 @@ const Sidebar = () => {
 
 
         </div>
-        <div className=" p-7 text-2xl font-semibold flex-1 h-screen">
-          <h1>hola mundo </h1>
+        <div className=" p-7 text-2xl font-semibold flex-1 h-screen bg-no-repeat bg-cover" style={{backgroundImage:`url(${adminPhoto})`}}>
+          
         </div>
       </div>
     </>

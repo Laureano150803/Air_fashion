@@ -6,12 +6,14 @@ import service from '../assets/images/service.png';
 import paid from '../assets/images/paid.png'
 import dayjs from 'dayjs';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 import '../scroll.css'
 import TableOfCalendar from './TableOfCalendar';
 import { useParams } from 'react-router-dom';
 
 export default function HairDresserPanel() {
   const{id}=useParams()
+  const navigate = useNavigate()
   const token = localStorage.getItem('token');
   const headers = { headers: { 'authorization': `Bearer ${token}` } };
 
@@ -37,6 +39,9 @@ export default function HairDresserPanel() {
       axios.get(apiUrl + 'google/allMyAppointments', headers )
       .then(res => setCitas(res.data.response))
       .catch(res => console.log(res));
+    }
+    if(role !== '3' && role!=='2' ){
+      navigate('/')
     }
 
       
