@@ -16,6 +16,7 @@ import PaymentApproveAndAppointment from "../components/PaymentApproveAndAppoint
 import HairDresserPanel from "../components/HairDresserPanel.jsx";
 import Diary from "../components/Diary.jsx";
 import Statistics from "../components/Statistics.jsx";
+import ShowAllServices from "../components/ShowAllServices.jsx";
 const router = createBrowserRouter([
     {
       
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
         {path: "/ListHairdresser" , element:<ListHairdresser/>},
         {path: "/Diary" , element:<Diary/>},
         {path:"/appointment", element:<AppiomentClient/>},
+        {path:"/showServices", element:<ShowAllServices/>},
         {path:"/appointmentsTable", element:<AppoimennsTable/>},
         {path:"/appointment/new", element:<FormAppointment/>},
         {path:"/detail/:id/:genero", element:<DetailTypeService/>},

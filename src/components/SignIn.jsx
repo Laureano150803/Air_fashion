@@ -10,20 +10,21 @@ import { useNavigate } from 'react-router-dom'
 import soloSvg from '/src/assets/images/undraw_referral_re_0aji.svg'
 import signup from '/src/assets/images/undraw_icons_wdp4.svg'
 import fondo from '/src/assets/images/fonfo_formulario.jpg'
-
 import '../TiltComponent.css'
 import Register from '../components/Register'
-
-
 export default function SignIn() {
   const [isOpen, setisOpen] = useState(false)
+
 
   function openPanel() {
     setisOpen(true)
   }
   function closePanel() {
+
     setisOpen(false)
   }
+
+
 
 
 
@@ -106,6 +107,7 @@ export default function SignIn() {
           <div className='w-[100%] h-[100%]  flex justify-end'
             style={{
 
+
               backgroundImage: `url("${fondo}")`,
               backgroundSize: 'cover ',
               filter: 'blur(15px)'
@@ -119,12 +121,16 @@ export default function SignIn() {
           {!isOpen && (
 
 
+
+
             <div className="signin-signup container42 animate-fade-left animate-duration-[1000ms] animate-delay-150">
               <div className='borderLine42 flex justify-center items-center'></div>
+
 
               <form id='form' className=" z-20 flex h-auto" onSubmit={handleform}>
 
                 <h2 className="title text-4xl text-css-h1 text-white p-5 z-10">Sign in</h2>
+
 
                 <GoogleLogin
                   className="flex space-x-2 z-10 justify-center  items-end hover:scale-105 border border-gray-300 text-gray-600 py-2 transition duration-100 w-96 "
@@ -185,6 +191,7 @@ export default function SignIn() {
               <div  className='borderLine42 flex justify-center items-center'></div>
               <Register goBack={closePanel}/>
             </div>
+
           )}
         </div>
         <div className="panels-container  ">
@@ -201,6 +208,7 @@ export default function SignIn() {
                 If you don't have an account please create one here</p>
 
               <button onClick={openPanel} className=' bg-transparent rounded-3xl text-white h-10 font-bold border-4  w-32 '> Sign Up</button>
+
             </div>
             <img src={soloSvg} className='image animate-flip-up animate-duration-[2000ms]' />
           </div>
@@ -208,8 +216,10 @@ export default function SignIn() {
 
           {isOpen && (
 
+
           <div className="panel left-panel  ">
             <div className="content animate-jump-in animate-duration-1000 animate-fill-forwards">
+
 
               <h3>One of us?</h3>
               <p>Welcome to Hair Fashion, a high-end hair salon that offers excellent services to treat your hair in the best way.

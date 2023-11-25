@@ -13,7 +13,7 @@ ChartJS.register(
     BarElement
 )
 
-const BarChart = () => {
+const BarChart = ({SettotalAnual}) => {
 
   const [chart, setchart] = useState([])
 
@@ -26,25 +26,33 @@ const BarChart = () => {
   
 
   const preciosPorMes = {};
+  let totalAnual = 0;
 
 chart.forEach((mes) => {
+  const year = dayjs(mes.inicio).year();
   const nombreMes = dayjs(mes.inicio).format('MMMM');
   const precio = mes.servicio_id.precio;
+  if(year === 2023){
 
-  if (!preciosPorMes[nombreMes]) {
-    preciosPorMes[nombreMes] = precio;
-  } else {
-    preciosPorMes[nombreMes] += precio;
+    if (!preciosPorMes[nombreMes]) {
+      preciosPorMes[nombreMes] = precio;
+    } else {
+      preciosPorMes[nombreMes] += precio;
+    }
+    totalAnual += precio
+   
   }
+  SettotalAnual(totalAnual)
 });
 
 const mesesUnicosArray = Object.keys(preciosPorMes);
 const sumasPorMes = Object.values(preciosPorMes);
 
+
 let data = {
   labels: mesesUnicosArray,
   datasets: [{
-    label: `Total Price per Month`,
+    label: ``,
     data: sumasPorMes,
     backgroundColor: 'rgba(0,0,255,0.4)',
     borderColor: 'rgba(0,0,255,1)',

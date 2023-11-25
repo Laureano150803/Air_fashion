@@ -128,7 +128,6 @@ export default function Register({goBack}) {
                   <span></span>
                   <div className='borderLine4 flex justify-center items-center'></div>
                   <h1 className='z-10 text-css'>
-
                     Sign Up
                   </h1>
                 </button>

@@ -7,13 +7,22 @@ import apiUrl from '../../api.js';
 import { useNavigate } from "react-router-dom";
 import showSwalAlert from "../showAlert";
 import NavbarMobile from './NavbarMobile';
-import Swal from "sweetalert2";
+import MyPendingAppointments from "./MyPendingAppointments.jsx";
 import '../backgroundSlider.css';
 
 export default function Navbar() {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const headers = { headers: { 'authorization': `Bearer ${token}` } };
+
+  const [onMyAppointments, setOnMyAppointments] = useState(false)
+
+  function showMyAppointments() {
+    setOnMyAppointments(true)
+  }
+  function cancelMyAppointments() {
+    setOnMyAppointments(false)
+  }
 
 
   const checkToken = async () => {
@@ -28,7 +37,7 @@ export default function Navbar() {
 
       window.scrollTo(0, 0);
 
-      
+
     }
   };
 
@@ -43,7 +52,7 @@ export default function Navbar() {
     setOption(!option);
   }
 
-  
+
   const role = localStorage.getItem("role");
   function backHome() {
     axios.post(apiUrl + 'users/signout', null, headers)
@@ -77,7 +86,7 @@ export default function Navbar() {
 
 
           <div className="flex  w-[100%] h-[100%] xxsm:flex-row-reverse xsm:flex-row-reverse">
-            <Link to={'/'}  className="w-[20%] flex items-center justify-center xxsm:mr-3 xsm:mr-4 ">
+            <Link to={'/'} className="w-[20%] flex items-center justify-center xxsm:mr-3 xsm:mr-4 ">
               <img src={fix == true ? logo3 : logo} alt="logo" className={fix == true ? 'h-14 animate-rotate-x animate-duration-2000 ' : 'h-10 animate-jump-in animate-duration-1000 xsm:w-40 '} />
             </Link >
             {/* Botón de menú para dispositivos móviles */}
@@ -95,7 +104,7 @@ export default function Navbar() {
               {role === '1' && <Link to="/Diary" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Check the Haidressers calendar
               </Link>}
-              <Link to="#" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
+              <Link to="/showServices" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Services
               </Link>
               {role === '2' &&
@@ -124,8 +133,19 @@ export default function Navbar() {
 
                 </div>
               ) : ('')}
+
+              {role === '1' &&
+                <div>
+                  <svg onClick={showMyAppointments} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 cursor-pointer hover:scale-125 duration-150">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                  </svg>
+
+                </div>}
+
+
+              {onMyAppointments && <MyPendingAppointments close={cancelMyAppointments} />}
             </div>
-            {/* Navegación móvil (condicional) */}
+           
             {option && (<NavbarMobile backHome={backHome} estado={handleMenu} />)}
           </div>
         </div>
