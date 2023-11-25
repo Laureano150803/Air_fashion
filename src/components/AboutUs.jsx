@@ -77,6 +77,8 @@ const AboutUs = () => {
                     <h1 className=' text-2xl text-white aboutUs' >
                         Customer service is a priority at our high-end salon
                     </h1>
+                  <Link to={'/showServices'} className='flex justify-center items-center w-[20rem] '>
+                  
                   
                     <button className="wrapper  rounded-xl ">
                         <span></span>
@@ -85,6 +87,9 @@ const AboutUs = () => {
                         <span></span>
                         Explore all Services
                     </button>
+                  
+                  
+                  </Link>
                 </div>
 
             </div>
