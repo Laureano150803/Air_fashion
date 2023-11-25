@@ -69,23 +69,19 @@ export default function Register({goBack}) {
   return (
     <>
 
-
       <div className="w-full flex justify-center items-center h-full ">
       <form className="singn-up-form  flex items-center justify-centern flex-col" onSubmit={handleform}>
               <h2 className="title text-4xl text-css-h1 text-white mb-3 z-10 p-2">Sign up</h2>
 
               <GoogleLogin
                 className="flex z-20 space-x-2 justify-center rounded-xl items-end hover:scale-105 border border-gray-300 text-gray-600 py-2 transition duration-100 w-[384px]"
-
                 clientId={clientID}
                 buttonText="Sign In with Google"
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 cookiePolicy={"single_host_policy"}
               />
-
               <div className="flex justify-center items-center z-10 text-white p-3">
-
                 <p>OR</p>
               </div>
               <div className=" p-3 flex flex-col gap-7  ">
@@ -101,9 +97,7 @@ export default function Register({goBack}) {
 
                   </div>
 
-
                   <input ref={email} className="block p-2 pl-10 text-lg text-white z-20 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif     placeholder-white outline-none" type="text" placeholder="E-mail" autoComplete="none" required />
-
                 </div>
                 <div className="input-sing-in relative text-white">
 
@@ -116,7 +110,6 @@ export default function Register({goBack}) {
                   </div>
 
                   <input ref={password} className="block p-2 pl-10 text-lg text-white z-20 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 font-serif  placeholder-white    outline-none" type="password" placeholder="Password" required />
-
                 </div>
                 <div className="input-sing-in relative text-white">
 
@@ -128,16 +121,13 @@ export default function Register({goBack}) {
 
                   </div>
 
-
                   <input ref={passwordConfirmation} className="block p-2 pl-10 text-lg text-white z-20 border border-gray-300 bg-gray-500/5 rounded-2xl w-96 h-14 placeholder-white  font-serif    outline-none" type="password" placeholder="Confirm Password" required />
-
                 </div>
               </div>
               <button type="submit" className='container3 z-10 text-xl text-white mt-6 bg-transparent p-4 ' style={{ width: '384px' }}>
                   <span></span>
                   <div className='borderLine4 flex justify-center items-center'></div>
                   <h1 className='z-10 text-css'>
-
                     Sign Up
                   </h1>
                 </button>
