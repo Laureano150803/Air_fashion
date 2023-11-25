@@ -152,6 +152,11 @@ const CrudService = () => {
 
         <div className="flex justify-evenly items-center overflow-auto  mb-6">
 
+
+        </div>
+
+        <div className="flex justify-evenly items-center overflow-auto  mb-6">
+
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-[65%] h-[600px] overflow-auto touch-pan-y  ">
             <div className="flex items-center justify-around py-4 bg-gradient-to-r from-cyan-500 to-blue-500  ">
               <button onClick={checkAndOpenModalcreate} className="flex justify-center  items-center gap-x-2 transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 w-60 p-2 rounded-lg hover:text-white ">

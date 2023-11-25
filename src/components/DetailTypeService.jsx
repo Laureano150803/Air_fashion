@@ -6,7 +6,7 @@ import img1 from '/src/assets/images/barber-man.jpg'
 import '../backgroundSlider.css';
 
 export default function DetailTypeService() {
-  const { id ,genero } = useParams()
+  const { id, genero } = useParams()
   const [servicios, setServicios] = useState([])
   useEffect(() => {
     axios.get(apiUrl + `types/${id}`).then(res => setServicios(res.data.Response)).catch(res => console.log(res))
@@ -30,22 +30,22 @@ export default function DetailTypeService() {
     default:
       Genero = '';
   }
-  
+
 
   return (
     <>
       <div className="flex justify-evenly w-[100%] ">
 
-        <div className="flex justify-between w-[40rem] h-[70rem] bg-no-repeat bg-center bg-cover rounded-2xl m-10 " style={{backgroundImage:`url("${Genero}")`}}>
-      
+        <div className="flex justify-between w-[40rem] h-[70rem] bg-no-repeat bg-center bg-cover rounded-2xl m-10 " style={{ backgroundImage: `url("${Genero}")` }}>
+
 
         </div>
         <div className=" w-[60%]">
-          
-            <h1 className=' aboutUs text-4xl text-center text-gray-900  mt-8 '>Fashion Hairdressing Services For {genero}</h1>
-            <div className="line-loader  h-1 mb-8"></div>
 
-         
+          <h1 className=' aboutUs text-4xl text-center text-gray-900  mt-8 '>Fashion Hairdressing Services For {genero}</h1>
+          <div className="line-loader  h-1 mb-8"></div>
+
+
           <div className="flex flex-wrap gap-12 mb-10 justify-center">
 
             {servicios.map(servicio => (

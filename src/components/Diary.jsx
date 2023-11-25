@@ -57,7 +57,7 @@ const Diary = () => {
 
                             </div>
                             <div className="custom-scrollbar">
-
+                                {agenda.length === 0 && <div className='text-center mt-2 font-bold text-lg'>You are de firts in line</div>}
 
                                 {agenda.map((agendas) => (
 

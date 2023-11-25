@@ -149,7 +149,6 @@ export default function Navbar() {
 
               {onMyAppointments && <MyPendingAppointments close={cancelMyAppointments} />}
             </div>
-
             {option && (<NavbarMobile backHome={backHome} estado={handleMenu} />)}
           </div>
         </div>
