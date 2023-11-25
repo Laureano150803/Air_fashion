@@ -15,6 +15,7 @@ const ShowAllServices = () => {
       .then(res => setaTypeServices(res.data.Response))
       .catch(error => console.log('Error fetching types:', error));
   }, []);
+  
 
   const generos = {
     Gentlemen: "https://img.freepik.com/foto-gratis/vista-lateral-hombre-que-consigue-nuevo-corte-pelo_23-2148242786.jpg?w=740&t=st=1698955336~exp=1698955936~hmac=14023ef5f24caa73cc8e6912a50eb6a60e29cc6a72bba1f2ed6be928e4ddfd41",
@@ -28,19 +29,27 @@ const ShowAllServices = () => {
   typesServices.forEach((type) => {
     const servicesFilter = allServices.filter((service) => service.serviceTypeId._id === type._id);
 
+
     // Almacenar la URL de la imagen como cover_photo en filteredServices
     filteredServices[type._id] = {
       services: servicesFilter,
       cover_photo: generos[type.name]
     };
+
   });
+
+
 
   return (
     <>
+
       {Object.entries(filteredServices).map(([typeId, { services, cover_photo }]) => (
         <div key={typeId} className="flex  w-[100%]">
 
           <div className=" flex justify-evenly">
+
+
+          <h2 className='hidden'>{typesServices.find(type => type._id === typeId)?.name}</h2>
 
 
 
@@ -79,3 +88,4 @@ const ShowAllServices = () => {
 };
 
 export default ShowAllServices;
+
