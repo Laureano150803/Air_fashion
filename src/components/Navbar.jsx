@@ -104,7 +104,7 @@ export default function Navbar() {
               {role === '1' && <Link to="/Diary" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Check the Haidressers calendar
               </Link>}
-              <Link to="#" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
+              <Link to="/showServices" className="hover:text-violet-800 hover:border-b-2 transition duration-700">
                 Services
               </Link>
               {role === '2' &&
@@ -144,11 +144,8 @@ export default function Navbar() {
 
 
               {onMyAppointments && <MyPendingAppointments close={cancelMyAppointments} />}
-
-
-
             </div>
-            {/* Navegación móvil (condicional) */}
+           
             {option && (<NavbarMobile backHome={backHome} estado={handleMenu} />)}
           </div>
         </div>
