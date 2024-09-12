@@ -1,0 +1,116 @@
+
+.custom-scrollbar {
+    overflow-y: auto;
+    max-height: 95vh;
+    scrollbar-width: thin;
+    scrollbar-color:  #3498db; /* color de la barra y color del fondo */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px; /* ancho de la barra de desplazamiento */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color:  #3cdee7;
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #1cb6be; /* color del fondo de la barra de desplazamiento */
+  }
+  .signin-signup {
+    top: 45%;
+    transform: translate(-50%, -50%);
+    left: 47%;
+    min-width: 50%;
+    transition: 1s 0.7s ease-in-out;
+    grid-template-columns: 1fr;
+    z-index: 5;
+  }
+
+
+
+
+  
+  #form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0rem 5rem;
+    transition: all 0.2s 0.7s;
+    overflow: hidden;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  
+.contain::before{
+  content: '';
+  position: absolute;
+  width: 2000px;
+  height: 2000px;
+  border-radius: 50%;
+ background: linear-gradient(to right, rgb(249, 168, 212), rgb(216, 180, 254), rgb(129, 140, 248)) ; 
+ top: -10%;
+ right: 55%;
+ transform: translateY(-35%) ;
+ transition: 1.8s ease-in-out;
+ border-radius: 50%;
+ z-index: 6;
+}
+
+.panels-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+
+
+.image {
+  width: 100%;
+  
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  text-align: center;
+  z-index: 7;
+}
+
+.left-panel {
+  pointer-events: all;
+  padding: 3rem 17% 2rem 12%;
+}
+
+.right-panel {
+  pointer-events: none;
+  padding: 3rem 12% 2rem 17%;
+}
+
+.panel .content {
+  color: #fff;
+  transition: transform 0.9s ease-in-out;
+  transition-delay: 0.6s;
+}
+
+.panel h3 {
+  font-weight: 600;
+  line-height: 1;
+  font-size: 1.5rem;
+}
+
+.panel p {
+  font-size: 0.95rem;
+  padding: 0.7rem 0;
+}
+
+
+  
