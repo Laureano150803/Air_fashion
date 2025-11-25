@@ -1,5 +1,5 @@
-/* let apiUrl = 'http://localhost:8000/' */
-let apiUrl = 'https://airfashion.onrender.com/'
+ let apiUrl = 'http://localhost:8000/'
+/* let apiUrl = 'https://airfashion.onrender.com/' */
 
 if(import.meta.env.PROD){
     apiUrl == import.meta.env.VITE_API
