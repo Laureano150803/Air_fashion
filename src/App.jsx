@@ -1,5 +1,4 @@
 import HomeCarrucel from "./components/HomeCarrucel"
-import './app.css'
 import LittleOfUs from "./components/LittleOfUs"
 import ImageGallery from "./components/ImageGallery"
 import CardsHairdresser from "./components/CardsHairdresser"
@@ -10,7 +9,7 @@ function App() {
 
   return (
     <>
-      <div className="App">
+      <div className="h-100vh">
         <HomeCarrucel />
       </div>
       <div>
