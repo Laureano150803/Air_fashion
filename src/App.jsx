@@ -1,11 +1,31 @@
-import { Link as Anchor } from "react-router-dom"
+import HomeCarrucel from "./components/HomeCarrucel"
+import LittleOfUs from "./components/LittleOfUs"
+import ImageGallery from "./components/ImageGallery"
+import CardsHairdresser from "./components/CardsHairdresser"
+import CardService3D from "./components/CardService3D"
+
 
 function App() {
 
   return (
     <>
+      <div className="h-[100vh]">
+        <HomeCarrucel />
+      </div>
       <div>
-        <Anchor to={'/register'}>Registrate</Anchor>
+        <LittleOfUs />
+      </div>
+      <div>
+        <ImageGallery />
+      </div>
+      <div className="flex flex-col">
+        <div className="mb-14 ">
+          <CardsHairdresser />
+        </div>
+
+        <div>
+          <CardService3D />
+        </div>
       </div>
     </>
   )

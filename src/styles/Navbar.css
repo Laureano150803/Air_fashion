@@ -1,0 +1,9 @@
+.menu_wave{
+    mask-image: url('../assets/shape_menu_1.svg');
+    mask-position: bottom;
+   
+}
+.s{
+    border: 1px solid #fff;
+}
+
