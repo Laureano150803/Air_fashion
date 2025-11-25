@@ -1,12 +1,32 @@
-import { Link as Anchor } from "react-router-dom"
+import HomeCarrucel from "./components/HomeCarrucel"
+import './app.css'
+import LittleOfUs from "./components/LittleOfUs"
+import ImageGallery from "./components/ImageGallery"
+import CardsHairdresser from "./components/CardsHairdresser"
+import CardService3D from "./components/CardService3D"
+
 
 function App() {
-  
 
   return (
     <>
-      <div className='text-center flex justify-center w-full h-screen items-center'>
-        <Anchor to={'/register'}><button className="border border-red-500 font-bold rounded-xl px-2 hover:bg-gray-200">Administra tu negocio!!</button></Anchor>
+      <div className="App">
+        <HomeCarrucel />
+      </div>
+      <div>
+        <LittleOfUs />
+      </div>
+      <div>
+        <ImageGallery />
+      </div>
+      <div className="flex flex-col">
+        <div className="mb-14 ">
+          <CardsHairdresser />
+        </div>
+
+        <div>
+          <CardService3D />
+        </div>
       </div>
     </>
   )
